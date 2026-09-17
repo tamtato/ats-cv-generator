@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import EditorSidebar from '../components/EditorSidebar/EditorSidebar.vue';
-import CvPreview from '../components/CvPreview/index.vue';
+import PaginatedPreview from '../components/PaginatedPreview.vue';
 import AtsRealitiesModal from "../components/AtsRealitiesModal.astro";
 ---
 
@@ -24,7 +24,7 @@ import AtsRealitiesModal from "../components/AtsRealitiesModal.astro";
 	</aside>
 	<!-- CV Preview Area -->
 	<section class="md:col-span-6 lg:col-span-7 h-full overflow-y-auto print:block">
-		<CvPreview client:only="vue" />
+		<PaginatedPreview client:only="vue" />
 	</section>
 </main>
 </body>

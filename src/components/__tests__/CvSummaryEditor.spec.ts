@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
-import CvSummaryEditor from '../../EditorSidebar/CvSummaryEditor.vue';
-import { useCvStore } from '../../../stores/cvStore.ts';
+import CvSummaryEditor from '../EditorSidebar/CvSummaryEditor.vue';
+import { useCvStore } from '../../stores/cvStore';
 
 describe('CvSummaryEditor.vue', () => {
     let wrapper: any;
