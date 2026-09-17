@@ -1,8 +1,8 @@
 <script setup>
 import { ref, shallowRef, watch, onMounted, nextTick } from 'vue';
 import { Previewer } from 'pagedjs';
-import Index from './BasicTheme/index.vue';
-import { useCvStore } from '../../stores/cvStore.ts';
+import BasicCv from './CvContent/BasicTheme/BasicCv.vue';
+import { useCvStore } from '../stores/cvStore';
 
 const cvStore = useCvStore();
 const sourceContent = ref(null);
@@ -82,7 +82,7 @@ onMounted(() => {
     <!-- Hidden Vue Source -->
     <div class="hidden">
       <div ref="sourceContent">
-        <Index />
+        <BasicCv />
       </div>
     </div>
   </div>

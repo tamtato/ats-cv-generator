@@ -1,8 +1,8 @@
 import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
-import CvSelectFontAndColor from '../../EditorSidebar/CvSelectFontAndColor.vue';
-import { useCvStore } from '../../../stores/cvStore.ts';
+import CvSelectFontAndColor from '../EditorSidebar/CvSelectFontAndColor.vue';
+import { useCvStore } from '../../stores/cvStore';
 
 describe('CvSelectFontAndColor.vue', () => {
     let wrapper: VueWrapper<any>;
