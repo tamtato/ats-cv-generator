@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+/* 1. Tell Paged.js to calculate margins for an A4 document */
+@page {
+    size: A4;
+    margin: 1.5cm;
+}
+
+/* 2. Style the Paged.js output for the screen UI */
+@media screen {
+    .pagedjs_pages {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding-top: 2rem;
+    }
+    .pagedjs_page {
+        background-color: white;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        margin: 0 !important; /* Paged.js inline margins will break flex layout */
+    }
+}
+
+/* 3. Strict print rules to kill the blank ghost page */
+@media print {
+    /* Zero out native browser margins so they don't stack on top of Paged.js margins */
+    @page {
+        margin: 0 !important;
+        size: A4;
+    }
+
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        height: 100% !important;
+    }
+
+    .pagedjs_pages {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .pagedjs_page {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        /* Force page breaks everywhere... */
+        break-after: always !important;
+        page-break-after: always !important;
+        overflow: hidden !important;
+    }
+
+    /* ...EXCEPT on the final page (fixes the 1-page blank ghost bug) */
+    .pagedjs_page:last-of-type {
+        break-after: auto !important;
+        page-break-after: auto !important;
+    }
+}
+
+/* ----------------------------------------- */
+/* PAGINATION LOGIC                       */
+/* ----------------------------------------- */
+
+/*.job-block {
+    break-inside: auto;
+    page-break-inside: auto;
+}
+
+.job-block li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.job-block h4,
+.job-block .font-semibold {
+    break-after: avoid;
+    page-break-after: avoid;
+}
+
+.skills-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}*/
