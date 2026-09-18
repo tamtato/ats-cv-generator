@@ -5,6 +5,9 @@ import vue from '@astrojs/vue';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://tamtato.github.io',
+  base: '/ats-cv-generator',
+
   vite: {
     plugins: [tailwindcss()]
   },
