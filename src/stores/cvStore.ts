@@ -46,8 +46,6 @@ export const useCvStore = defineStore('cv', () => {
                     'Engineered a solo breakout utilizing a paperclip and liquid rooter, neutralizing security personnel without lethal force.',
                 ]
             },
-
-
         ]
     });
 
