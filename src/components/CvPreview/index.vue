@@ -1,87 +1,70 @@
 <script setup>
-import { ref, shallowRef, watch, onMounted, nextTick } from 'vue';
-import { Previewer } from 'pagedjs';
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import BasicTheme from './BasicTheme/index.vue';
-import { useCvStore } from '../../stores/cvStore.ts';
 
-const cvStore = useCvStore();
-const sourceContent = ref(null);
-const pagedContainer = ref(null);
-const previewer = shallowRef(null);
-let renderTimeout = null;
-let isRendering = false;
+const contentRef = ref(null);
+const pageCount = ref(1);
 
-const renderPages = async () => {
-  if (isRendering) return;
+const PAGE_CAPACITY_PX = 995.9;
 
-  clearTimeout(renderTimeout);
-  renderTimeout = setTimeout(async () => {
-    isRendering = true;
-    await nextTick();
-
-    if (pagedContainer.value) {
-      pagedContainer.value.innerHTML = '';
-    }
-    document.querySelectorAll('style[data-pagedjs-inserted-styles]').forEach(el => el.remove());
-
-    const clone = sourceContent.value.cloneNode(true);
-    clone.style.display = 'block';
-
-    // Strip Vue comment nodes to prevent Paged.js tree-walker crashes
-    const treeWalker = document.createTreeWalker(clone, NodeFilter.SHOW_COMMENT, null, false);
-    const comments = [];
-    let currentNode;
-    while ((currentNode = treeWalker.nextNode())) {
-      comments.push(currentNode);
-    }
-    comments.forEach(node => node.parentNode?.removeChild(node));
-
-    // Prevent Paged.js from parsing Tailwind v4 CSS and crashing.
-    // We supply ONLY the pagination/fragmentation rules it strictly needs to calculate pages.
-    // All visual Tailwind styling will still be natively rendered by the browser!
-    const pagedCss = `
-      @page { size: A4; margin: 1.5cm; }
-      .break-inside-avoid { break-inside: avoid; }
-    `;
-    const blob = new Blob([pagedCss], { type: 'text/css' });
-    const cssUrl = URL.createObjectURL(blob);
-
-    previewer.value = new Previewer();
-
-    try {
-      // Passing cssUrl prevents Paged.js from scanning document.styleSheets and crashing on Tailwind
-      await previewer.value.preview(clone, [cssUrl], pagedContainer.value);
-    } catch (error) {
-      console.error("Paged.js rendering failed:", error);
-    } finally {
-      URL.revokeObjectURL(cssUrl); // Clean up memory
-      isRendering = false;
-    }
-  }, 400);
-};
-
-watch(() => cvStore.cvData, () => {
-  renderPages();
-}, { deep: true });
+let observer;
 
 onMounted(() => {
-  renderPages();
+  observer = new ResizeObserver((entries) => {
+    for (let entry of entries) {
+      const contentHeight = entry.contentRect.height;
+      pageCount.value = Math.max(1, Math.ceil(contentHeight / PAGE_CAPACITY_PX));
+    }
+  });
+
+  if (contentRef.value) {
+    observer.observe(contentRef.value);
+  }
 });
 
-//TODO: Add theme switching support in the future. For now, we only support BasicCv.
+onBeforeUnmount(() => {
+  if (observer) observer.disconnect();
+});
+
+const cutLines = computed(() => {
+  const lines = [];
+  for (let i = 1; i < pageCount.value; i++) {
+    lines.push(`calc(1.5cm + ${i * 266}mm)`);
+  }
+  return lines;
+});
 </script>
 
 <template>
-  <div class="h-full relative overflow-hidden bg-gray-300 print:bg-white flex flex-col">
-    <!-- Target for Paged.js output -->
+  <div class="h-full overflow-y-auto bg-gray-300 py-10 print:py-0 print:bg-white print:h-auto print:overflow-visible print:block">
     <div
-        ref="pagedContainer"
-        class="paged-preview-container overflow-y-auto w-full h-full pb-10 print:overflow-visible print:pb-0"
-    ></div>
+        class="cv-paper relative mx-auto bg-white shadow-2xl"
+        :style="{ minHeight: `calc(3cm + (${pageCount} * 266mm))` }"
+    >
+      <!-- Static Page 1 Label -->
+      <div class="absolute top-0 -left-20 mt-6 text-sm font-medium text-slate-600 print:hidden">
+        Page 1
+      </div>
 
-    <!-- Hidden Vue Source -->
-    <div class="hidden">
-      <div ref="sourceContent">
+      <!-- Dynamic Cut-Lines & Page Labels -->
+      <template v-for="(pos, index) in cutLines" :key="index">
+        <!-- Page Label -->
+        <div
+            class="absolute -left-20 mt-6 text-sm font-medium text-slate-600 print:hidden"
+            :style="{ top: pos }"
+        >
+          Page {{ index + 2 }}
+        </div>
+
+        <!-- Cut Line -->
+        <div
+            class="absolute -left-10 -right-10 z-10 border-b-2 border-dashed border-slate-400 print:hidden"
+            :style="{ top: pos }"
+        ></div>
+      </template>
+
+      <!-- Document Content -->
+      <div ref="contentRef">
         <BasicTheme />
       </div>
     </div>

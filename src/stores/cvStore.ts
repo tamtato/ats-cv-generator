@@ -37,7 +37,7 @@ export const useCvStore = defineStore('cv', () => {
             },
             {
                 id: '2',
-                title: 'Involuntary Inpatient (Maximum Security)',
+                title: '1 Involuntary Inpatient (Maximum Security)',
                 company: 'Pescadero State Hospital',
                 startDate: '1994',
                 endDate: '1995',
@@ -46,8 +46,6 @@ export const useCvStore = defineStore('cv', () => {
                     'Engineered a solo breakout utilizing a paperclip and liquid rooter, neutralizing security personnel without lethal force.',
                 ]
             },
-
-
         ]
     });
 

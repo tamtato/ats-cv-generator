@@ -13,15 +13,15 @@ defineProps<{
       Experience
     </h3>
     <div v-for="job in experience" :key="job.id" class="mb-5 job-block">
-      <div class="flex justify-between items-baseline mb-1">
-        <h4 class="font-bold text-base">{{ job.title }}</h4>
-        <span class="text-gray-600 font-medium">
+        <div class="flex justify-between items-baseline mb-1">
+          <h4 class="font-bold text-base">{{ job.title }}</h4>
+          <span class="text-gray-600 font-medium">
             {{ job.startDate }} <span v-if="job.startDate && job.endDate">-</span> {{ job.endDate }}
           </span>
-      </div>
-      <div class="font-semibold mb-2">{{ job.company }}</div>
+        </div>
+        <div class="font-semibold mb-2">{{ job.company }}</div>
       <ul class="list-disc list-outside ml-4 space-y-1">
-        <li v-for="(bullet, index) in job.bullets" :key="index">
+        <li v-for="(bullet, index) in job.bullets" :key="index" class="relative break-inside-auto max-[print]:[orphans:1] max-[print]:[widows:1]">
           {{ bullet }}
         </li>
       </ul>
