@@ -13,7 +13,7 @@ defineProps<{
       Technical Skills
     </h3>
     <ul class="space-y-1">
-      <li v-for="(skillGroup, index) in skills" :key="index" class="relative break-inside-auto max-[print]:[orphans:1] max-[print]:[widows:1]">
+      <li v-for="(skillGroup, index) in skills" :key="index" class="relative break-inside-auto">
         <span class="font-bold">{{ skillGroup.category }}:</span> {{ skillGroup.items }}
       </li>
     </ul>
