@@ -37,7 +37,7 @@ export const useCvStore = defineStore('cv', () => {
             },
             {
                 id: '2',
-                title: '1 Involuntary Inpatient (Maximum Security)',
+                title: 'Involuntary Inpatient (Maximum Security)',
                 company: 'Pescadero State Hospital',
                 startDate: '1994',
                 endDate: '1995',
