@@ -21,7 +21,7 @@ defineProps<{
         </div>
         <div class="font-semibold mb-2">{{ job.company }}</div>
       <ul class="list-disc list-outside ml-4 space-y-1">
-        <li v-for="(bullet, index) in job.bullets" :key="index" class="relative break-inside-auto max-[print]:[orphans:1] max-[print]:[widows:1]">
+        <li v-for="(bullet, index) in job.bullets" :key="index" class="relative break-inside-auto">
           {{ bullet }}
         </li>
       </ul>
