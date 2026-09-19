@@ -16,8 +16,6 @@ describe('CvEducationEditor.vue', () => {
         });
 
         store = useCvStore();
-
-        // Set baseline state with zero jobs
         store.cvData = {
             education: []
         };
@@ -36,7 +34,6 @@ describe('CvEducationEditor.vue', () => {
     });
 
     it('removes a education when clicking the Remove Education button', async () => {
-        // Seed store with one job
         store.cvData.education = [{ id: '1', title: 'Developer', school: '', startDate: '', endDate: '', description: '' }];
         await wrapper.vm.$nextTick();
 
