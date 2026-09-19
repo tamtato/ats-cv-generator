@@ -1,13 +1,23 @@
-<script setup>
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
-import BasicTheme from './BasicTheme/index.vue';
+<script setup lang="ts">
+import {ref, onMounted, onBeforeUnmount, computed, defineAsyncComponent} from 'vue';
+import type { Component } from 'vue';
+import {useCvStore} from "../../stores/cvStore.ts";
+import {CvThemes} from "../../types/themes.ts";
 
-const contentRef = ref(null);
+const cvStore = useCvStore();
+
+const themeMap: Record<CvThemes, Component> = {
+  [CvThemes.BASIC]: defineAsyncComponent(() => import('./BasicTheme/index.vue')),
+  [CvThemes.THEME_TWO]: defineAsyncComponent(() => import('./ThemeTwo/index.vue')),
+};
+const ActiveThemeComponent = computed(() => themeMap[cvStore.cvData.selectedTheme]);
+
+const contentRef = ref<HTMLElement | null>(null);
 const pageCount = ref(1);
 
 const PAGE_CAPACITY_PX = 995.9;
 
-let observer;
+let observer: ResizeObserver | undefined;
 
 onMounted(() => {
   observer = new ResizeObserver((entries) => {
@@ -65,7 +75,7 @@ const cutLines = computed(() => {
 
       <!-- Document Content -->
       <div ref="contentRef">
-        <BasicTheme />
+        <ActiveThemeComponent />
       </div>
     </div>
   </div>

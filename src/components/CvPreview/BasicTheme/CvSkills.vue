@@ -8,11 +8,11 @@ defineProps<{
 </script>
 
 <template>
-  <section v-if="skills && skills.length > 0">
-    <h3 class="text-lg mb-3 font-bold uppercase border-b border-gray-200" :style="{ color: selectedColor}">
+  <section>
+    <h3 class="text-[15px] mb-3 font-bold uppercase border-b border-gray-200" :style="{ color: selectedColor}">
       Technical Skills
     </h3>
-    <ul class="space-y-1">
+    <ul class="space-y-1 text-[12px]">
       <li v-for="(skillGroup, index) in skills" :key="index" class="relative break-inside-auto">
         <span class="font-bold">{{ skillGroup.category }}:</span> {{ skillGroup.items }}
       </li>

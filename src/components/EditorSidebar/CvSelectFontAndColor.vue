@@ -21,9 +21,6 @@ const atsSafeFonts = [
 </script>
 
 <template>
-  <div class="border-b pb-6 flex flex-col gap-3">
-    <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider">Document Settings</h3>
-    <div>
       <label class="block text-xs font-medium text-gray-600 mb-1">Font Family (ATS Safe)</label>
       <select
           data-testid="fontSelect"
@@ -38,10 +35,10 @@ const atsSafeFonts = [
           {{ font.label }}
         </option>
       </select>
-    </div>
-    <div>
+
+
       <label class="block text-xs font-medium text-gray-600 mb-1">Theme Color</label>
       <input type="color" v-model="cvStore.cvData.selectedColor" data-testid="colorPicker" class="w-full h-10 p-1 border rounded cursor-pointer" />
-    </div>
-  </div>
+
+
 </template>

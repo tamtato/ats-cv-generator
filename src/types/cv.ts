@@ -1,3 +1,5 @@
+import type {CvThemes} from "./themes.ts";
+
 export interface CvSkillType {
     category: string;
     items: string;
@@ -10,6 +12,15 @@ export interface CvExperienceType {
     startDate?: string;
     endDate?: string;
     bullets: string[];
+}
+
+export interface CvEducationType {
+    id: string;
+    title: string;
+    school: string;
+    startDate?: string;
+    endDate?: string;
+    description: string;
 }
 
 export interface CvHeaderType {
@@ -25,8 +36,10 @@ export interface CvHeaderType {
 export interface CvDataType {
     selectedFont: string;
     selectedColor: string;
+    selectedTheme: CvThemes;
     header: CvHeaderType;
     summary: string;
     skills: CvSkillType[];
     experience: CvExperienceType[];
+    education: CvEducationType[];
 }

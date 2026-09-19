@@ -1,11 +1,13 @@
 import { defineStore } from 'pinia';
 import { useLocalStorage } from '@vueuse/core';
 import type {CvDataType} from "../types/cv.ts";
+import {CvThemes} from "../types/themes.ts";
 
 export const useCvStore = defineStore('cv', () => {
     const cvData = useLocalStorage<CvDataType>('ats-cv-data', {
         selectedFont: '"Courier New", monospace',
         selectedColor: '#000000',
+        selectedTheme: CvThemes.BASIC,
         header: {
             name: 'Sarah Connor',
             title: 'Lead Anti-AGI Tactical Engineer',
@@ -27,7 +29,7 @@ export const useCvStore = defineStore('cv', () => {
                 id: '1',
                 title: 'Systems Saboteur & Operations Lead',
                 company: 'The Human Resistance',
-                startDate: 'Aug 1997',
+                startDate: '1997',
                 endDate: 'Present',
                 bullets: [
                     'Architected the physical destruction of the Cyberdyne Systems primary development lab, preventing the deployment of the Skynet system.',
@@ -45,6 +47,16 @@ export const useCvStore = defineStore('cv', () => {
                     'Maintained peak physical conditioning under severe constraints using improvised tactical training.',
                     'Engineered a solo breakout utilizing a paperclip and liquid rooter, neutralizing security personnel without lethal force.',
                 ]
+            },
+        ],
+        education: [
+            {
+                id: '1',
+                title: 'Advanced Tactical Engineering',
+                school: 'Resistance Training Academy',
+                startDate: '1995',
+                endDate: '1997',
+                description: 'Completed an intensive program focused on guerrilla tactics, cybernetic countermeasures, and temporal anomaly navigation.'
             },
         ]
     });
