@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {CvEducationType} from "../../../types/cv.ts";
+import type {CvEducationType} from "../../../../types/cv.ts";
 
 defineProps<{
   education: CvEducationType[];

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {CvSkillType} from "../../../types/cv.ts";
+import type {CvSkillType} from "../../../../types/cv.ts";
 
 defineProps<{
   skills: CvSkillType[];

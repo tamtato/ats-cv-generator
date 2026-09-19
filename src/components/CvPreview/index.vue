@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import {ref, onMounted, onBeforeUnmount, computed, defineAsyncComponent} from 'vue';
-import type { Component } from 'vue';
+import {ref, onMounted, onBeforeUnmount, computed} from 'vue';
 import {useCvStore} from "../../stores/cvStore.ts";
-import {CvThemes} from "../../types/themes.ts";
-
+import CvSummary from "./CvLayout/sections/CvSummary.vue";
+import CvEducation from "./CvLayout/sections/CvEducation.vue";
+import CvExperience from "./CvLayout/sections/CvExperience.vue";
+import CvSectionWrapper from "./CvLayout/common/CvSectionWrapper.vue";
+import CvSkills from "./CvLayout/sections/CvSkills.vue";
+import CvHeader from "./CvLayout/sections/CvHeader.vue";
 const cvStore = useCvStore();
 
-const themeMap: Record<CvThemes, Component> = {
-  [CvThemes.BASIC]: defineAsyncComponent(() => import('./BasicTheme/index.vue')),
-  [CvThemes.THEME_TWO]: defineAsyncComponent(() => import('./ThemeTwo/index.vue')),
-};
-const ActiveThemeComponent = computed(() => themeMap[cvStore.cvData.selectedTheme]);
+
+const activeThemeStyles = computed(() => {
+  return {
+    '--color-selected-color': cvStore.cvData.selectedColor,
+    'fontFamily': cvStore.cvData.selectedFont
+  };
+});
 
 const contentRef = ref<HTMLElement | null>(null);
 const pageCount = ref(1);
@@ -74,8 +79,25 @@ const cutLines = computed(() => {
       </template>
 
       <!-- Document Content -->
-      <div ref="contentRef">
-        <ActiveThemeComponent />
+      <div ref="contentRef" :style="activeThemeStyles" class="flex flex-col gap-6">
+
+
+          <CvHeader :header="cvStore.cvData.header" />
+
+          <CvSummary v-if="cvStore.cvData.summary" :summary="cvStore.cvData.summary" />
+
+          <CvSectionWrapper v-if="cvStore.cvData.education?.length > 0" header="Education">
+            <CvEducation :education="cvStore.cvData.education" />
+          </CvSectionWrapper>
+
+          <CvSectionWrapper v-if="cvStore.cvData.experience?.length > 0" header="Experience">
+            <CvExperience :experience="cvStore.cvData.experience" />
+          </CvSectionWrapper>
+
+          <CvSectionWrapper v-if="cvStore.cvData.skills?.length > 0" header="Skills">
+            <CvSkills :skills="cvStore.cvData.skills" />
+          </CvSectionWrapper>
+
       </div>
     </div>
   </div>

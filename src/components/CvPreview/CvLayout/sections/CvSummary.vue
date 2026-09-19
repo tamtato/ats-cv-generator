@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SectionWrapperThemeTwo from "./SectionWrapperThemeTwo.vue";
+import CvSectionWrapper from "../common/CvSectionWrapper.vue";
 
 defineProps<{
   summary: string;
