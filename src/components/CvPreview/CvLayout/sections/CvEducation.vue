@@ -1,20 +1,25 @@
 <script setup lang="ts">
-import type {CvEducationType} from "../../../../types/cv.ts";
+import {useActiveTheme} from "../../../../composables/useActiveTheme.ts";
+import BlockItem from "../common/BlockItem.vue";
+import {useCvStore} from "../../../../stores/cvStore.ts";
+import SectionWrapper from "../common/SectionWrapper.vue";
 
-defineProps<{
-  education: CvEducationType[];
-}>();
+const cvStore = useCvStore();
+const theme = useActiveTheme();
+
 </script>
 
 <template>
-  <section>
-    <div v-for="e in education" :key="e.id" class="mt-3 job-block">
-      <h5 class="font-bold text-[12px]">{{ e.title }}</h5>
-        <div class="mb-2 text-[11px] flex gap-1 font-medium">
-          <h6>{{ e.school }}:</h6>
-          <h6 class="text-gray-600">{{ e.startDate || 'yymmdd' }} - {{ e.endDate || 'yymmdd' }}</h6>
-        </div>
-        <p class="text-[11px]">{{e.description}}</p>
-    </div>
-  </section>
+  <SectionWrapper v-if="cvStore.cvData.education?.length > 0" header="Education">
+  <BlockItem
+        v-for="e in cvStore.cvData.education"
+        :key="e.id"
+        :title="e.title"
+        :sub-title="e.school"
+        :start-date="e.startDate"
+        :end-date="e.endDate"
+    >
+      <p :class="theme.education.description">{{e.description}}</p>
+    </BlockItem>
+  </SectionWrapper>
 </template>

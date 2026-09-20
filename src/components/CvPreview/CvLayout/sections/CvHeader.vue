@@ -1,35 +1,30 @@
 <script setup lang="ts">
-import type {CvHeaderType} from "../../../../types/cv.ts";
 import {computed} from "vue";
 import {useActiveTheme} from "../../../../composables/useActiveTheme.ts";
+import {useCvStore} from "../../../../stores/cvStore.ts";
 
-const props = defineProps<{
-  header: CvHeaderType;
-}>();
+const cvStore = useCvStore();
 
-const contactInfo = computed(() => [props.header.location, props.header.phone, props.header.email]);
-const links = computed(() => [props.header.github, props.header.linkedin]);
+const contactInfo = computed(() => [cvStore.cvData.header.location, cvStore.cvData.header.phone, cvStore.cvData.header.email]);
+const links = computed(() => [cvStore.cvData.header.github, cvStore.cvData.header.linkedin]);
 const theme = useActiveTheme();
 
 </script>
 
 <template>
-  <header>
-    <div class="flex flex-col gap-1 ">
-      <h1 :class="theme.headerName">
-        {{ header.name }}
+  <header :class="theme.header.wrapper">
+      <h1 :class="theme.header.name">
+        {{ cvStore.cvData.header.name }}
       </h1>
-      <h2
-          :class="theme.headerTitle"
-          >
-        {{ header.title }}
-      </h2>
+    <h2
+        :class="theme.header.title"
+    >
+      {{ cvStore.cvData.header.title }}
+    </h2>
 
-    </div>
-
-    <div class="flex flex-wrap mt-3 gap-1">
-        <p v-for="contact in contactInfo" :key="contact" class="mr-2" >{{ contact }}</p>
-        <a v-for="link in links" :key="link" :href="'https://' + link" target="_blank" class="mr-2"
+    <div :class="theme.header.contact.wrapper">
+        <p v-for="contact in contactInfo" :key="contact" :class="theme.header.contact.contacts" >{{ contact }}</p>
+        <a v-for="link in links" :key="link" :href="'https://' + link" target="_blank" :class="theme.header.contact.links"
           >
           {{ link }}
         </a>

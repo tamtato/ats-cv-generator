@@ -1,24 +1,33 @@
 <script setup lang="ts">
-import type {CvExperienceType} from "../../../../types/cv.ts";
+import {useActiveTheme} from "../../../../composables/useActiveTheme.ts";
+import BlockItem from "../common/BlockItem.vue";
+import SectionWrapper from "../common/SectionWrapper.vue";
+import {useCvStore} from "../../../../stores/cvStore.ts";
 
-defineProps<{
-  experience: CvExperienceType[];
-}>();
+const cvStore = useCvStore();
+const theme = useActiveTheme();
+
 </script>
 
 <template>
-  <section>
-    <div v-for="job in experience" :key="job.id" class="mt-3 job-block ">
-      <h5 class="font-bold text-[12px]">{{ job.title }}</h5>
-        <div class="mb-2 text-[11px] flex gap-1 font-medium">
-          <h6>{{ job.company }}:</h6>
-          <h6 class="text-gray-600">{{ job.startDate || 'yymmdd' }} - {{ job.endDate || 'yymmdd' }}</h6>
-        </div>
-        <ul class="space-y-1 pl-2 text-[11px]">
-          <li v-for="(bullet, index) in job.bullets" :key="index" class="relative break-inside-auto">
-            <span class="text-[12px] font-bold">-</span> {{ bullet }}
-          </li>
-        </ul>
-    </div>
-  </section>
+  <SectionWrapper v-if="cvStore.cvData.experience?.length > 0" header="Experience">
+    <BlockItem
+        v-for="job in cvStore.cvData.experience"
+        :key="job.id"
+        :title="job.title"
+        :sub-title="job.company"
+        :start-date="job.startDate"
+        :end-date="job.endDate"
+    >
+      <ul :class="theme.experience.ul">
+        <li
+            v-for="(bullet, index) in job.bullets"
+            :key="index"
+            :class="`relative break-inside-auto ${theme.experience.li}`"
+        >
+          <span class="text-[12px] font-bold">-</span> {{ bullet }}
+        </li>
+      </ul>
+    </BlockItem>
+  </SectionWrapper>
 </template>

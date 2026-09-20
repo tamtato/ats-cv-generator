@@ -1,13 +1,11 @@
 @import "tailwindcss";
 
+/* =========================================
+   DYNAMIC CSS VARS FOR TAILWIND
+========================================= */
 @theme {
     --color-selected-color: #000;
 }
-
-
-
-
-
 
 /* =========================================
    SCREEN UI

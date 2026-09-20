@@ -1,9 +1,12 @@
 import { computed } from 'vue';
 import { useCvStore } from '../stores/cvStore';
 import { themeDefinitions } from '../utils/themeDefinitions';
+import {defaultTheme} from "../utils/default.ts";
 
 export function useActiveTheme() {
     const store = useCvStore();
-    // Returns the object of Tailwind strings for the currently selected theme
-    return computed(() => themeDefinitions[store.cvData.selectedTheme]);
+    return computed(() => ({
+        ...defaultTheme,
+        ...themeDefinitions[store.cvData.selectedTheme]
+    }));
 }
