@@ -19,7 +19,7 @@ const theme = useActiveTheme();
         <h6 :class="theme.blockItem.subTitle.title">{{ subTitle }}:</h6>
         <h6 :class="theme.blockItem.subTitle.dates">
           {{ startDate || 'yymmdd' }} -
-          <span :class="theme.blockItem.subTitle.endDate">
+          <span :class="endDate?.toLowerCase().includes('present') ? theme.blockItem.subTitle.endDate : ''">
             {{ endDate || 'yymmdd' }}
           </span>
         </h6>

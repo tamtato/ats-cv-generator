@@ -29,8 +29,8 @@ describe('CvThemeSelector.vue', () => {
 
     it('updates the store when a new theme is selected', async () => {
         const themeSelect = wrapper.find('[data-testid="themeSelect"]');
-        await themeSelect.setValue(CvThemes.FANCY);
-        expect(store.cvData.selectedTheme).toBe(CvThemes.FANCY);
+        await themeSelect.setValue(CvThemes.THEME_ONE);
+        expect(store.cvData.selectedTheme).toBe(CvThemes.THEME_ONE);
     });
 });
 

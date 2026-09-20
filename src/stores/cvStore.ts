@@ -6,8 +6,8 @@ import {CvThemes} from "../types/themes/themeTypes.ts";
 export const useCvStore = defineStore('cv', () => {
     const cvData = useLocalStorage<CvDataType>('ats-cv-data', {
         selectedFont: 'Arial, sans-serif',
-        selectedColor: '#000000',
-        selectedTheme: CvThemes.BASIC,
+        selectedColor: '#b30909',
+        selectedTheme: CvThemes.DEFAULT,
         header: {
             name: 'Sarah Connor',
             title: 'Lead Anti-AGI Tactical Engineer',
