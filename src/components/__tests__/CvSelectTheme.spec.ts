@@ -3,7 +3,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import CvSelectTheme from '../EditorSidebar/CvSelectTheme.vue';
 import { useCvStore } from '../../stores/cvStore';
-import {CvThemes} from "../../types/themes.ts";
+import {CvThemes} from "../../types/themes/themeTypes.ts";
 
 describe('CvThemeSelector.vue', () => {
     let wrapper: VueWrapper<any>;
@@ -19,7 +19,7 @@ describe('CvThemeSelector.vue', () => {
         store = useCvStore();
 
         store.cvData = {
-            selectedTheme: CvThemes.BASIC,
+            selectedTheme: CvThemes.DEFAULT,
         };
     });
 
@@ -29,8 +29,8 @@ describe('CvThemeSelector.vue', () => {
 
     it('updates the store when a new theme is selected', async () => {
         const themeSelect = wrapper.find('[data-testid="themeSelect"]');
-        await themeSelect.setValue(CvThemes.THEME_TWO);
-        expect(store.cvData.selectedTheme).toBe(CvThemes.THEME_TWO);
+        await themeSelect.setValue(CvThemes.FANCY);
+        expect(store.cvData.selectedTheme).toBe(CvThemes.FANCY);
     });
 });
 

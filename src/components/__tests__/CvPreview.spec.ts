@@ -2,10 +2,9 @@ import { mount, VueWrapper, flushPromises } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import { useCvStore } from '../../stores/cvStore';
-import { CvThemes } from '../../types/themes';
+import { CvThemes } from '../../types/themes/themeTypes.ts';
 import CvPreview from '../CvPreview/CvPreview.vue';
-import BasicTheme from '../CvPreview/BasicTheme/index.vue';
-import ThemeTwo from '../CvPreview/ThemeTwo/index.vue';
+
 
 describe('CvPreview.vue', () => {
     let wrapper: VueWrapper<any>;
@@ -31,7 +30,7 @@ describe('CvPreview.vue', () => {
 
         store = useCvStore();
         store.cvData = {
-            selectedTheme: CvThemes.BASIC,
+            selectedTheme: CvThemes.DEFAULT,
             header: {
                 name: 'Test User',
             },
@@ -53,23 +52,6 @@ describe('CvPreview.vue', () => {
         await wrapper.vm.$nextTick(); // Wait for Vue to update the DOM based on new pageCount
     };
 
-    describe('Theme Rendering Logic', () => {
-        it('renders the BasicTheme by default', async () => {
-            store.cvData.selectedTheme = CvThemes.BASIC;
-            await flushPromises();
-
-            expect(wrapper.findComponent(BasicTheme).exists()).toBe(true);
-            expect(wrapper.findComponent(ThemeTwo).exists()).toBe(false);
-        });
-
-        it('switches to ThemeTwo when the store updates', async () => {
-            store.cvData.selectedTheme = CvThemes.THEME_TWO;
-            await flushPromises();
-
-            expect(wrapper.findComponent(ThemeTwo).exists()).toBe(true);
-            expect(wrapper.findComponent(BasicTheme).exists()).toBe(false);
-        });
-    });
 
     describe('Pagination & Cut-Line Logic', () => {
         it('renders only 1 page when content height is below the capacity threshold', async () => {

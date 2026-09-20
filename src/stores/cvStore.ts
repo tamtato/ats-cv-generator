@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { useLocalStorage } from '@vueuse/core';
 import type {CvDataType} from "../types/cv.ts";
-import {CvThemes} from "../types/themes.ts";
+import {CvThemes} from "../types/themes/themeTypes.ts";
 
 export const useCvStore = defineStore('cv', () => {
     const cvData = useLocalStorage<CvDataType>('ats-cv-data', {

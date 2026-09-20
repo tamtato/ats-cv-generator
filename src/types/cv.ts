@@ -1,4 +1,4 @@
-import type {CvThemes} from "./themes.ts";
+import type {CvThemes} from "./themes/themeTypes.ts";
 
 export interface CvSkillType {
     category: string;

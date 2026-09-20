@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 import { useCvStore } from '../stores/cvStore';
-import { themeDefinitions } from '../utils/themeDefinitions';
-import {defaultTheme} from "../utils/default.ts";
+import { themeDefinitions } from '../types/themes/themeDefinitions.ts';
+import {defaultTheme} from "../types/themes/default.ts";
 
 export function useActiveTheme() {
     const store = useCvStore();

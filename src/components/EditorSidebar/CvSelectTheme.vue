@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {useCvStore} from "../../stores/cvStore.ts";
-import {CvThemes} from "../../types/themes.ts";
+import {CvThemes} from "../../types/themes/themeTypes.ts";
 
 const cvStore = useCvStore();
 
