@@ -4,26 +4,17 @@ import {useCvStore} from "../../stores/cvStore.ts";
 const cvStore = useCvStore();
 
 const atsSafeFonts = [
-  { label: 'Inter', value: '"Inter", sans-serif' },
-  { label: 'Lato', value: '"Lato", sans-serif' },
-  { label: 'Montserrat', value: '"Montserrat", sans-serif' },
-  { label: 'Open Sans', value: '"Open Sans", sans-serif' },
-  { label: 'Roboto', value: '"Roboto", sans-serif' },
-  { label: 'Arial', value: 'Arial, sans-serif' },
-  { label: 'Helvetica', value: 'Helvetica, sans-serif' },
-  { label: 'Calibri', value: 'Calibri, sans-serif' },
-  { label: 'Tahoma', value: 'Tahoma, sans-serif' },
-  { label: 'Courier New', value: '"Courier New", monospace' },
-  { label: 'Times New Roman', value: '"Times New Roman", Times, serif' },
-  { label: 'Georgia', value: 'Georgia, serif' },
-  { label: 'Garamond', value: 'Garamond, serif' },
+  { label: 'Arial, sans-serif', value: 'Arial, sans-serif' },
+  { label: 'Calibri, sans-serif', value: 'Calibri, sans-serif' },
+  { label: 'Helvetica, sans-serif', value: 'Helvetica, sans-serif' },
+  { label: 'Tahoma, sans-serif', value: 'Tahoma, sans-serif' },
+  { label: 'Garamond, serif', value: 'Garamond, serif' },
+  { label: 'Georgia, serif', value: 'Georgia, serif' },
+  { label: 'Times New Roman, serif', value: '"Times New Roman", Times, serif' },
 ];
 </script>
 
 <template>
-  <div class="border-b pb-6 flex flex-col gap-3">
-    <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wider">Document Settings</h3>
-    <div>
       <label class="block text-xs font-medium text-gray-600 mb-1">Font Family (ATS Safe)</label>
       <select
           data-testid="fontSelect"
@@ -38,10 +29,10 @@ const atsSafeFonts = [
           {{ font.label }}
         </option>
       </select>
-    </div>
-    <div>
+
+
       <label class="block text-xs font-medium text-gray-600 mb-1">Theme Color</label>
       <input type="color" v-model="cvStore.cvData.selectedColor" data-testid="colorPicker" class="w-full h-10 p-1 border rounded cursor-pointer" />
-    </div>
-  </div>
+
+
 </template>

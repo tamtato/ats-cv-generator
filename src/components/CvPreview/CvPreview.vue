@@ -1,13 +1,14 @@
-<script setup>
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
-import BasicTheme from './BasicTheme/index.vue';
+<script setup lang="ts">
+import {ref, onMounted, onBeforeUnmount, computed} from 'vue';
 
-const contentRef = ref(null);
+import CvLayout from "./CvLayout/CvLayout.vue";
+
+const contentRef = ref<HTMLElement | null>(null);
 const pageCount = ref(1);
 
 const PAGE_CAPACITY_PX = 995.9;
 
-let observer;
+let observer: ResizeObserver | undefined;
 
 onMounted(() => {
   observer = new ResizeObserver((entries) => {
@@ -41,32 +42,22 @@ const cutLines = computed(() => {
         class="cv-paper relative mx-auto bg-white shadow-2xl"
         :style="{ minHeight: `calc(3cm + (${pageCount} * 266mm))` }"
     >
-      <!-- Static Page 1 Label -->
       <div class="absolute top-0 -left-20 mt-6 text-sm font-medium text-slate-600 print:hidden">
         Page 1
       </div>
-
-      <!-- Dynamic Cut-Lines & Page Labels -->
       <template v-for="(pos, index) in cutLines" :key="index">
-        <!-- Page Label -->
         <div
             class="absolute -left-20 mt-6 text-sm font-medium text-slate-600 print:hidden"
             :style="{ top: pos }"
         >
           Page {{ index + 2 }}
         </div>
-
-        <!-- Cut Line -->
         <div
             class="absolute -left-10 -right-10 z-10 border-b-2 border-dashed border-slate-400 print:hidden"
             :style="{ top: pos }"
         ></div>
       </template>
-
-      <!-- Document Content -->
-      <div ref="contentRef">
-        <BasicTheme />
-      </div>
+      <CvLayout ref="contentRef" />
     </div>
   </div>
 </template>
