@@ -9,7 +9,7 @@ defineProps<{
       :is="href ? 'a' : 'button'"
       :href="href"
       :target="href ? '_blank' : ''"
-      class="flex items-center gap-2 text-gray-700 hover:text-indigo-600 transition-colors cursor-pointer"
+      class="flex items-center gap-2 text-sm text-gray-800 hover:text-indigo-600 transition-colors cursor-pointer tracking-widest"
   >
     <slot name="icon" />
     <slot />

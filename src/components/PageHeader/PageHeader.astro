@@ -4,12 +4,11 @@ import LOGO from '../../assets/LOGO.svg'
 import AtsRealitiesModal from "./AtsRealitiesModal.astro";
 import Button from '../common/Button.vue';
 import ReadMeDocsModal from "./ReadMeDocsModal.astro";
-import ImportExportActions from "./ImportExportActions.vue"
+import ImportExportActions from "../EditorSidebar/sections/ImportExportActions.vue"
 import GithubIcon from "../../assets/GithubIcon.astro";
 ---
 
-<div class="col-span-12 h-fit bg-white p-6">
-    <div class="flex flex-col gap-6">
+<div class="col-span-12 bg-white p-6 flex flex-col gap-6">
     <div class="flex items-center justify-between">
         <Image src={LOGO} alt="Logo" />
     <div class="flex gap-6">
@@ -20,10 +19,5 @@ import GithubIcon from "../../assets/GithubIcon.astro";
         <ReadMeDocsModal />
         <AtsRealitiesModal />
     </div>
-    </div>
-    <p class="font-light w-full md:w-1/3">
-        This project is 100% serverless. Your CV data never leaves your device and is saved locally in your browser.
-    </p>
-    <ImportExportActions client:load />
     </div>
 </div>

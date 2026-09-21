@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
-import { useCvStore } from "../../stores/cvStore.ts";
-import Button from "../common/Button.vue";
+import { useCvStore } from "../../../stores/cvStore.ts";
+import Button from "../../common/Button.vue";
 
 
 const cvStore = useCvStore();

@@ -19,7 +19,7 @@ const activeThemeStyles = computed(() => {
 </script>
 
 <template>
-  <div :style="activeThemeStyles" class="flex flex-col gap-6 text-gray-900">
+  <div :style="activeThemeStyles" class=" relative flex flex-col gap-6 text-gray-900">
     <CvHeader />
     <CvSummary />
     <CvEducation />

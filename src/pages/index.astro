@@ -1,8 +1,10 @@
 ---
 import '../styles/global.css';
-import EditorSidebar from '../components/EditorSidebar/index.vue';
-import CvPreview from '../components/CvPreview/CvPreview.vue';
+import EditorSidebar from '../components/EditorSidebar/EditorSidebar.vue';
+import DownloadPdfButton from "../components/EditorSidebar/DownloadPdfButton.vue";
+
 import PageHeader from "../components/PageHeader/PageHeader.astro";
+import CvPreview from '../components/CvPreview/CvPreview.vue';
 ---
 
 <html lang="en">
@@ -13,20 +15,21 @@ import PageHeader from "../components/PageHeader/PageHeader.astro";
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></head>
-<body class="bg-gray-200 m-0 p-6 font-body h-screen overflow-hidden print:p-0 print:bg-white print:h-auto print:overflow-visible">
-<main class="grid grid-cols-1 md:grid-cols-12 h-full print:block print:h-auto">
-	<PageHeader />
 
-	<!-- Left Sidebar (Hidden on Print) -->
-	<!--<aside class="md:col-span-6 lg:col-span-5 bg-white border-r border-gray-100 p-6 overflow-y-auto h-full print:hidden shadow-lg z-10 relative flex flex-col gap-6">
-		<AtsRealitiesModal />
-		&lt;!&ndash; Editor Tools &ndash;&gt;
+
+<body class="bg-gray-100 m-0 p-0 font-body relative h-screen overflow-hidden print:block print:p-0 print:bg-white print:h-auto print:overflow-visible">
+
+<main class="w-full relative h-full flex print:m-0 print:block print:h-auto">
+	<div class="flex-1 flex flex-col gap-6 p-6 print:hidden">
+		<PageHeader />
 		<EditorSidebar client:only="vue" />
-	</aside>
-	&lt;!&ndash; CV Preview Area &ndash;&gt;
-	<section class="md:col-span-6 lg:col-span-7 h-full overflow-y-auto print:block">
+	</div>
+
+	<div class=" h-full overflow-y-auto relative">
 		<CvPreview client:only="vue" />
-	</section>-->
+	</div>
 </main>
+
+
 </body>
 </html>

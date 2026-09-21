@@ -2,6 +2,7 @@
 import {ref, onMounted, onBeforeUnmount, computed} from 'vue';
 
 import CvLayout from "./CvLayout/CvLayout.vue";
+import DownloadPdfButton from "../EditorSidebar/DownloadPdfButton.vue";
 
 const contentRef = ref<HTMLElement | null>(null);
 const pageCount = ref(1);
@@ -37,21 +38,12 @@ const cutLines = computed(() => {
 </script>
 
 <template>
-  <div class="h-full overflow-y-auto bg-gray-300 py-10 print:py-0 print:bg-white print:h-auto print:overflow-visible print:block">
+  <div class="h-full overflow-y-auto py-6 pr-6 print:py-0 print:bg-white print:h-auto print:overflow-visible print:block">
     <div
-        class="cv-paper relative mx-auto bg-white shadow-2xl"
+        class="cv-paper relative bg-white "
         :style="{ minHeight: `calc(3cm + (${pageCount} * 266mm))` }"
     >
-      <div class="absolute top-0 -left-20 mt-6 text-sm font-medium text-slate-600 print:hidden">
-        Page 1
-      </div>
       <template v-for="(pos, index) in cutLines" :key="index">
-        <div
-            class="absolute -left-20 mt-6 text-sm font-medium text-slate-600 print:hidden"
-            :style="{ top: pos }"
-        >
-          Page {{ index + 2 }}
-        </div>
         <div
             class="absolute -left-10 -right-10 z-10 border-b-2 border-dashed border-slate-400 print:hidden"
             :style="{ top: pos }"
