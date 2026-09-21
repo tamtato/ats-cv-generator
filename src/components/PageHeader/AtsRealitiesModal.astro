@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "../common/Button.vue";
+import Modal from "../common/Modal.astro";
+---
+
+<Modal id="ats-modal" title="Reality of ATS Parsing">
+    <Button slot="trigger">
+        <Icon name="material-symbols-light:info-outline" slot="icon" class="w-6 h-6" />
+        Reality of ATS Parsing
+    </Button>
+    <ul class="space-y-5 text-base">
+        <li>
+            <strong class="font-bold">Visuals are Invisible:</strong> ATS parsers do not care about your design. Complex formatting like tables, text boxes, columns, and graphics will actively disrupt the scan and scramble your text into unreadable gibberish.
+        </li>
+        <li>
+            <strong class="font-bold">The "Auto-Reject" could be a Myth:</strong> Some ATS platforms might not auto-reject resumes simply for missing keywords. You might be failing the human review.
+        </li>
+        <li>
+            <strong class="font-bold">The "White Font" Trick is a Trap:</strong> Hiding keywords in white text to trick the parser will backfire. The ATS extracts everything into plain text, making you look desperate and dishonest to the recruiter.
+        </li>
+        <li>
+            <strong class="font-bold">Dates Require Strict Consistency:</strong> Mixing formats like "March 2023" and "03/2023" confuses the parser and can invent false employment gaps.
+        </li>
+        <li>
+            <strong class="font-bold">Creative Headers Kill Context:</strong> Labeling your experience section "My Journey" means the ATS will likely skip it entirely. Stick to standard headers like "Work Experience" and "Skills".
+        </li>
+        <li>
+            <strong class="font-bold">Keyword Stuffing Fails Modern Parsers:</strong> Modern ATS software uses natural language processing. A bullet point that reads "Led a team of 5 to improve performance by 30%" beats a standalone list of keywords every time.
+        </li>
+        <li>
+            <strong class="font-bold">Headers and Footers are Dead Zones:</strong> Do not put your contact information in the document header or footer. Many parsers completely ignore these fields.
+        </li>
+    </ul>
+</Modal>

@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import EditorSidebar from '../components/EditorSidebar/index.vue';
 import CvPreview from '../components/CvPreview/CvPreview.vue';
-import AtsRealitiesModal from "../components/AtsRealitiesModal.astro";
+import PageHeader from "../components/PageHeader/PageHeader.astro";
 ---
 
 <html lang="en">
@@ -12,20 +12,21 @@ import AtsRealitiesModal from "../components/AtsRealitiesModal.astro";
 	<title>ATS CV Generator</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body class="bg-gray-300 m-0 p-0 font-sans h-screen overflow-hidden print:bg-white print:h-auto print:overflow-visible">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></head>
+<body class="bg-gray-200 m-0 p-6 font-body h-screen overflow-hidden print:p-0 print:bg-white print:h-auto print:overflow-visible">
 <main class="grid grid-cols-1 md:grid-cols-12 h-full print:block print:h-auto">
+	<PageHeader />
+
 	<!-- Left Sidebar (Hidden on Print) -->
-	<aside class="md:col-span-6 lg:col-span-5 bg-white border-r border-gray-300 p-6 overflow-y-auto h-full print:hidden shadow-lg z-10 relative flex flex-col gap-6">
+	<!--<aside class="md:col-span-6 lg:col-span-5 bg-white border-r border-gray-100 p-6 overflow-y-auto h-full print:hidden shadow-lg z-10 relative flex flex-col gap-6">
 		<AtsRealitiesModal />
-		<!-- Editor Tools -->
+		&lt;!&ndash; Editor Tools &ndash;&gt;
 		<EditorSidebar client:only="vue" />
 	</aside>
-	<!-- CV Preview Area -->
+	&lt;!&ndash; CV Preview Area &ndash;&gt;
 	<section class="md:col-span-6 lg:col-span-7 h-full overflow-y-auto print:block">
 		<CvPreview client:only="vue" />
-	</section>
+	</section>-->
 </main>
 </body>
 </html>

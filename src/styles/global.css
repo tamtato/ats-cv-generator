@@ -5,7 +5,10 @@
 ========================================= */
 @theme {
     --color-selected-color: #000;
+    --font-header: 'Roboto Condensed', sans-serif;
+    --font-body: 'Roboto Mono', monospace;
 }
+
 
 /* =========================================
    SCREEN UI

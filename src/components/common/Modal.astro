@@ -1,0 +1,74 @@
+---
+interface Props {
+    id: string;
+    title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<modal-dialog data-modal-id={id}>
+    <!-- Slot for whatever button triggers this modal -->
+    <div class="modal-trigger w-fit cursor-pointer">
+        <slot name="trigger" />
+    </div>
+
+    <!-- Native Dialog Element -->
+    <dialog
+            id={id}
+            class="backdrop:bg-black/60 p-0 rounded-lg shadow-2xl max-w-3xl w-[90vw] m-auto overflow-hidden text-gray-900"
+    >
+        <div class="p-6 md:p-8 max-h-[85vh] overflow-y-auto">
+            <div class="flex justify-between items-start border-b-2 border-gray-200 pb-4 mb-6">
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight">{title}</h2>
+                <button
+                        class="close-modal text-gray-500 hover:text-gray-900 font-bold text-xl leading-none"
+                        aria-label="Close"
+                >
+                    &times;
+                </button>
+            </div>
+
+            <!-- Slot for the modal content -->
+            <slot />
+        </div>
+    </dialog>
+</modal-dialog>
+
+<script>
+    // This script runs once, but the class logic applies to every <modal-dialog> on the page
+    class ModalDialog extends HTMLElement {
+        connectedCallback() {
+            const dialog = this.querySelector('dialog') as HTMLDialogElement;
+            const triggerWrapper = this.querySelector('.modal-trigger');
+            const closeBtn = this.querySelector('.close-modal');
+
+            // Open modal
+            triggerWrapper?.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevents link navigation if the trigger is an <a> tag
+                dialog.showModal();
+            });
+
+            // Close modal via button
+            closeBtn?.addEventListener('click', () => {
+                dialog.close();
+            });
+
+            // Close modal by clicking backdrop
+            dialog.addEventListener('click', (e) => {
+                const rect = dialog.getBoundingClientRect();
+                if (
+                    e.clientX < rect.left ||
+                    e.clientX > rect.right ||
+                    e.clientY < rect.top ||
+                    e.clientY > rect.bottom
+                ) {
+                    dialog.close();
+                }
+            });
+        }
+    }
+
+    // Register the custom element
+    customElements.define('modal-dialog', ModalDialog);
+</script>
