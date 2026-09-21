@@ -3,7 +3,7 @@ import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 
 import { useCvStore } from '../../stores/cvStore';
-import ImportExportActions from "../EditorSidebar/ImportExportActions.vue";
+import ImportExportActions from "../PageHeader/ImportExportActions.vue";
 
 describe('ImportExportActions.vue', () => {
     let wrapper: any;
@@ -60,7 +60,7 @@ describe('ImportExportActions.vue', () => {
             }
         } as any;
 
-        const fileInput = wrapper.find('[data-testid="importJson-button"]');
+        const fileInput = wrapper.find('[data-testid="importJson-input"]');
         Object.defineProperty(fileInput.element, 'files', {
             value: [new File([''], 'test.json')]
         });
@@ -80,7 +80,7 @@ describe('ImportExportActions.vue', () => {
             }
         } as any;
 
-        const fileInput = wrapper.find('input[type="file"]');
+        const fileInput = wrapper.find('[data-testid="importJson-input"]');
         Object.defineProperty(fileInput.element, 'files', {
             value: [new File([''], 'test.json')]
         });

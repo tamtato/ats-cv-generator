@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { useLocalStorage } from '@vueuse/core';
-import { useCvStore } from '../../stores/cvStore.ts';
-import ImportExportActions from "./ImportExportActions.vue";
+
 import DownloadPdfButton from "./DownloadPdfButton.vue";
-import ToasterBanner from "../common/ToasterBanner.vue";
 import CvSelectFontAndColor from "./CvSelectFontAndColor.vue";
 import CvHeaderEditor from "./CvHeaderEditor.vue";
 import CvSummaryEditor from "./CvSummaryEditor.vue";
@@ -17,12 +14,10 @@ import CvEducationEditor from "./CvEducationEditor.vue";
 
 <template>
   <div class="flex flex-col gap-6">
-    <ToasterBanner color="blue" :persistent="true">
-      <strong>Heads up:</strong> This tool is 100% serverless. Your CV data never leaves your device and is saved locally in your browser.
-    </ToasterBanner>
+
     <div class="flex flex-wrap gap-2 border-b pb-6">
       <DownloadPdfButton />
-      <ImportExportActions />
+
     </div>
     <SectionWrapperEditorSidebar header="Document Settings">
       <CvSelectFontAndColor />

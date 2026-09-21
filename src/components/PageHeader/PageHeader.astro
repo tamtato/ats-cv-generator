@@ -1,29 +1,29 @@
 ---
 import Image from 'astro/components/Image.astro';
 import LOGO from '../../assets/LOGO.svg'
-import GITHUB from '../../assets/github.svg'
 import AtsRealitiesModal from "./AtsRealitiesModal.astro";
 import Button from '../common/Button.vue';
-import { Icon } from 'astro-icon/components';
 import ReadMeDocsModal from "./ReadMeDocsModal.astro";
+import ImportExportActions from "./ImportExportActions.vue"
+import GithubIcon from "../../assets/GithubIcon.astro";
 ---
 
 <div class="col-span-12 h-fit bg-white p-6">
-    <div class="flex items-center justify-between mb-4">
+    <div class="flex flex-col gap-6">
+    <div class="flex items-center justify-between">
         <Image src={LOGO} alt="Logo" />
     <div class="flex gap-6">
-        <Button href="https://github.com/tamtato">
-            <span slot="icon" >
-                <Image src={GITHUB} alt="GitHub" />
-            </span>
+        <Button href="https://github.com/tamtato/ats-cv-generator">
+            <GithubIcon slot="icon" class="w-6 h-6" />
             Github
         </Button>
         <ReadMeDocsModal />
         <AtsRealitiesModal />
     </div>
     </div>
-    <p>
+    <p class="font-light w-full md:w-1/3">
         This project is 100% serverless. Your CV data never leaves your device and is saved locally in your browser.
     </p>
-
+    <ImportExportActions client:load />
+    </div>
 </div>

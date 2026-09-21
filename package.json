@@ -15,6 +15,7 @@
   "dependencies": {
     "@astrojs/vue": "^7.0.2",
     "@iconify-json/material-symbols-light": "^1.2.93",
+    "@iconify/vue": "^5.0.2",
     "@tailwindcss/vite": "^4.3.3",
     "@vueuse/core": "^14.4.0",
     "astro": "^7.3.2",
