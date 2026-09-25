@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import {Icon} from "@iconify/vue";
+import type {FormId} from "../../types/forms.ts";
 
 const props = defineProps<{
   modelValue: string[];
-  list: Record<string, { label: string; icon: string; component: any }>;
+  list: Record<string, { label: string; icon: string; id: FormId }>;
   activeId: string;
 }>();
 

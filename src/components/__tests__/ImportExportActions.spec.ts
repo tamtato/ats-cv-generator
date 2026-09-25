@@ -3,8 +3,8 @@ import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 
 import { useCvStore } from '../../stores/cvStore';
-import ExportJson from "../CvBuilderApp/EditorSidebar/sections/ExportJSON.vue";
-
+import ExportJson from "../CvBuilderApp/SidebarMenu/ExportJSON.vue";
+//TODO BREAKOUT IMPORT TEST
 describe('ImportExportActions.vue', () => {
     let wrapper: any;
     let store: any;

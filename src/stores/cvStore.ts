@@ -5,11 +5,11 @@ import {CvThemes} from "../types/themes/themeTypes.ts";
 import {ref} from "vue";
 
 export const useCvStore = defineStore('cv', () => {
-    const activeTabId = ref('basicInfo');
-    const mobileOverlay = ref<'none' | 'editor' | 'preview'>('none');
-    const openEditorTab = (tabId: string) => {
-        activeTabId.value = tabId;
-        mobileOverlay.value = 'editor';
+    const activeFormId = ref('basicInfo');
+    const mobileOverlay = ref<'none' | 'form' | 'preview'>('none');
+    const openFormById = (formId: string) => {
+        activeFormId.value = formId;
+        mobileOverlay.value = 'form';
     };
 
     const cvData = useLocalStorage<CvDataType>('ats-cv-data', {
@@ -72,8 +72,8 @@ export const useCvStore = defineStore('cv', () => {
 
     return {
         cvData,
-        activeTabId,
+        activeFormId,
         mobileOverlay,
-        openEditorTab
+        openFormById
     };
 });

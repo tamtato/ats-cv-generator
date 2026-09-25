@@ -16,13 +16,13 @@ defineEmits<{
         isOpen ? 'translate-y-0' : 'translate-y-full'
       ]"
   >
-    <div class="flex justify-between items-center p-4 border-b border-gray-200 bg-gray-50">
-      <h3 class="text-indigo-600 font-header tracking-widest uppercase text-sm font-bold">
+    <div class="flex justify-between items-center px-4 py-2 border-b border-gray-200 bg-gray-white">
+      <h3 class="text-indigo-600 font-header tracking-widest uppercase">
         {{ title }}
       </h3>
       <button
           @click="$emit('close')"
-          class="text-3xl leading-none text-gray-500 p-2 hover:text-gray-800 transition-colors"
+          class="text-3xl leading-none text-gray-500 p-2 hover:text-indigo-600 transition-colors"
       >
         &times;
       </button>

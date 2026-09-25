@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
-import DownloadPdfButton from '../CvBuilderApp/EditorSidebar/sections/DownloadPdfButton.vue';
+import DownloadPdfButton from '../CvBuilderApp/SidebarMenu/DownloadPdfButton.vue';
 
 describe('DownloadPdfButton.vue', () => {
   let wrapper: any;

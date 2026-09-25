@@ -24,7 +24,6 @@ onMounted(() => {
   wrapperObserver = new ResizeObserver((entries) => {
     for (let entry of entries) {
       const availableWidth = entry.contentRect.width;
-      // 48px accounts for the p-6 (1.5rem * 2) padding
       const requiredWidth = A4_WIDTH_PX + 48;
       scaleFactor.value = availableWidth < requiredWidth
           ? availableWidth / requiredWidth
@@ -51,17 +50,16 @@ const unscaledHeight = computed(() => `calc(3cm + (${pageCount.value} * 266mm))`
 </script>
 
 <template>
-
-  <div ref="wrapperRef" class="w-full" >
+  <div ref="wrapperRef">
     <div
-        class="relative print:hidden mx-auto "
+        class="relative print:hidden mx-auto"
         :style="{
         width: `calc(${scaleFactor} * 210mm)`,
         height: `calc(${scaleFactor} * ${unscaledHeight})`
       }"
     >
       <div
-          class="cv-paper bg-white absolute top-0 left-0 origin-top-left"
+          class="cv-paper bg-white absolute top-0 left-0 origin-top-left border border-gray-200 "
           :style="{
           width: '210mm',
           padding: '1.5cm',
@@ -82,14 +80,4 @@ const unscaledHeight = computed(() => `calc(3cm + (${pageCount.value} * 266mm))`
       </div>
     </div>
   </div>
-
-
-
-
-<!--  &lt;!&ndash;    CONTENT THAT WILL BE DOWNLOADED TO PDF    &ndash;&gt;
-  <div class="cv-paper bg-white hidden print:block print:relative"
-       :style="{ width: '210mm', minHeight: `calc(3cm + (${pageCount} * 266mm))` }"
-  >
-    <CvLayout />
-  </div>-->
 </template>

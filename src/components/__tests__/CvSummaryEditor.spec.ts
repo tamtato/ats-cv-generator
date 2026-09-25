@@ -1,15 +1,15 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
-import CvSummaryEditor from '../CvBuilderApp/EditorSidebar/sections/CvSummaryEditor.vue';
+import SummaryForm from '../CvBuilderApp/FormContainer/forms/SummaryForm.vue';
 import { useCvStore } from '../../stores/cvStore';
 
-describe('CvSummaryEditor.vue', () => {
+describe('SummaryForm.vue', () => {
     let wrapper: any;
     let store: any;
 
     beforeEach(() => {
-        wrapper = mount(CvSummaryEditor, {
+        wrapper = mount(SummaryForm, {
             global: {
                 plugins: [createTestingPinia({ stubActions: false, createSpy: vi.fn, })],
             },

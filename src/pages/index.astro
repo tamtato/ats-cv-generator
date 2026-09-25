@@ -13,15 +13,15 @@ import PageHeader from '../components/PageHeader/PageHeader.astro';
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></head>
-<body class="m-0 p-0 h-screen flex flex-col font-body bg-gray-50 print:bg-white print:h-auto">
+<body class="m-0 p-0 h-screen flex flex-col font-body bg-gray-100 relative print:bg-white print:h-auto">
 
 <!-- Header area (Hidden when printing) -->
-<header class="print:hidden pb-6 ">
+<header class="print:hidden">
 	<PageHeader />
 </header>
 
 <!-- Main App Shell takes up the remaining vertical space -->
-<main class="flex-1 w-full overflow-hidden print:hidden">
+<main class="flex-1 w-full overflow-hidden print:hidden ">
 	<CvBuilderApp client:only="vue" />
 </main>
 

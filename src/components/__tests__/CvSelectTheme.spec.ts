@@ -1,7 +1,7 @@
 import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
-import CvSelectTheme from '../CvBuilderApp/EditorSidebar/sections/CvSelectTheme.vue';
+import ThemeForm from '../CvBuilderApp/FormContainer/forms/ThemeForm.vue';
 import { useCvStore } from '../../stores/cvStore';
 import {CvThemes} from "../../types/themes/themeTypes.ts";
 
@@ -10,7 +10,7 @@ describe('CvThemeSelector.vue', () => {
     let store: any;
 
     beforeEach(() => {
-        wrapper = mount(CvSelectTheme, {
+        wrapper = mount(ThemeForm, {
             global: {
                 plugins: [createTestingPinia({ stubActions: false, createSpy: vi.fn })],
             },

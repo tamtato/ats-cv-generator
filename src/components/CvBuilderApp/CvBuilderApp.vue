@@ -6,47 +6,40 @@ import MobileDrawer from '../common/MobileDrawer.vue';
 
 import CvPreview from './CvPreview/CvPreview.vue';
 import SidebarMenu from "./SidebarMenu/SidebarMenu.vue";
-import Editor from "./Editor/Editor.vue";
+import FormContainer from "./FormContainer/FormContainer.vue";
 import CvLayout from "./CvPreview/CvLayout/CvLayout.vue";
+import {type FormId, FORMS} from "../../types/forms.ts";
 
 const cvStore = useCvStore();
 
-const activeTabTitle = computed(() => {
-  const titles: Record<string, string> = {
-    basicInfo: 'Basic Info',
-    education: 'Education',
-    experience: 'Experience',
-    skills: 'Skills',
-    theme: 'Theme Settings'
-  };
-  return titles[cvStore.activeTabId] || 'Editor';
-});
+const activeForm = computed(() => FORMS[cvStore.activeFormId as FormId]);
 </script>
 
 <template>
-  <div class="flex-1 flex overflow-hidden relative w-full h-full">
+  <div class="flex w-full h-full ">
 
     <!-- 1. SIDEBAR (Self-manages full width on mobile, 64-width on desktop) -->
     <SidebarMenu />
 
     <!-- 2. DESKTOP EDITOR (Hidden on mobile) -->
-    <section class="hidden md:block flex-1 p-8 h-full overflow-y-auto bg-white">
-      <Editor />
+    <section class="hidden md:block flex-1 py-4 lg:py-6 h-full overflow-y-auto">
+      <FormContainer />
     </section>
 
     <!-- 3. DESKTOP PREVIEW (Hidden on mobile & small desktop) -->
-    <aside class="hidden xl:block w-2/5 overflow-y-auto h-full shrink-0">
+    <aside class="hidden xl:block w-2/5 h-full overflow-y-auto overflow-x-hidden pt-4 lg:pt-6">
       <CvPreview />
     </aside>
 
     <!-- MOBILE DRAWERS -->
     <MobileDrawer
         class="md:hidden"
-        :isOpen="cvStore.mobileOverlay === 'editor'"
-        :title="activeTabTitle"
+        :isOpen="cvStore.mobileOverlay === 'form'"
+        :title="activeForm?.label || 'Update CV Section'"
+        :icon="activeForm?.icon"
         @close="cvStore.mobileOverlay = 'none'"
     >
-      <Editor />
+      <FormContainer />
     </MobileDrawer>
     <MobileDrawer
         class="xl:hidden"
@@ -54,7 +47,7 @@ const activeTabTitle = computed(() => {
         title="Live CV Preview"
         @close="cvStore.mobileOverlay = 'none'"
     >
-      <div class="min-h-full flex justify-center bg-gray-100">
+      <div class="min-h-full max-w-full">
         <CvPreview />
       </div>
     </MobileDrawer>
