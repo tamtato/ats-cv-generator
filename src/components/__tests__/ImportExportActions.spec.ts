@@ -3,7 +3,7 @@ import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 
 import { useCvStore } from '../../stores/cvStore';
-import ImportExportActions from "../EditorSidebar/sections/ImportExportActions.vue";
+import ExportJson from "../EditorSidebar/sections/ExportJSON.vue";
 
 describe('ImportExportActions.vue', () => {
     let wrapper: any;
@@ -17,7 +17,7 @@ describe('ImportExportActions.vue', () => {
         window.URL.revokeObjectURL = vi.fn();
         vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
 
-        wrapper = mount(ImportExportActions, {
+        wrapper = mount(ExportJson, {
             global: {
                 plugins: [
                     createTestingPinia({

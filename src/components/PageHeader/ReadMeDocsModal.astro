@@ -1,16 +1,12 @@
 ---
-import { Icon } from "astro-icon/components";
-import Button from "../common/Button.vue";
-import Modal from "../common/Modal.astro";
+import InfoModal from "./common/InfoModal.astro";
+import HeaderButton from "./common/HeaderButton.astro";
 ---
 
-<Modal id="docs-modal" title="Documentation & Overview">
-    <Button slot="trigger">
-        <Icon name="material-symbols-light:description-outline" slot="icon" class="w-6 h-6" />
-        Docs
-    </Button>
-    <div class="prose max-w-none">
+<InfoModal id="docs-modal" title="Documentation & Overview">
+    <HeaderButton slot="trigger" text="Docs" icon="material-symbols-light:description-outline" />
+    <div>
         <h3>How it works</h3>
         <p>This project is 100% serverless. Your CV data never leaves your device...</p>
     </div>
-</Modal>
+</InfoModal>

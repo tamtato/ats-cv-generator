@@ -17,7 +17,7 @@
     .cv-paper {
         width: 210mm;
         padding: 1.5cm;
-        box-sizing: border-box;
+        background-color: #fff;
     }
 }
 
@@ -44,9 +44,7 @@
     .cv-paper {
         width: 100% !important;
         min-height: auto !important; /* Let print spooler determine height */
-        box-shadow: none !important;
         padding: 0 !important;
         margin: 0 !important;
-
     }
 }

@@ -2,22 +2,17 @@
 import Image from 'astro/components/Image.astro';
 import LOGO from '../../assets/LOGO.svg'
 import AtsRealitiesModal from "./AtsRealitiesModal.astro";
-import Button from '../common/Button.vue';
 import ReadMeDocsModal from "./ReadMeDocsModal.astro";
-import ImportExportActions from "../EditorSidebar/sections/ImportExportActions.vue"
-import GithubIcon from "../../assets/GithubIcon.astro";
+import GitHub from "./GitHub.astro";
 ---
 
-<div class="col-span-12 bg-white p-6 flex flex-col gap-6">
+<div class="bg-white p-3 lg:p-6 flex flex-col gap-6">
     <div class="flex items-center justify-between">
-        <Image src={LOGO} alt="Logo" />
-    <div class="flex gap-6">
-        <Button href="https://github.com/tamtato/ats-cv-generator">
-            <GithubIcon slot="icon" class="w-6 h-6" />
-            Github
-        </Button>
-        <ReadMeDocsModal />
-        <AtsRealitiesModal />
-    </div>
+        <Image src={LOGO} alt="Logo" class="w-auto" />
+        <div class="flex gap-2 md:gap-4 lg:gap-6">
+            <GitHub />
+            <ReadMeDocsModal />
+            <AtsRealitiesModal />
+        </div>
     </div>
 </div>

@@ -37,6 +37,7 @@ export interface CvDataType {
     selectedFont: string;
     selectedColor: string;
     selectedTheme: CvThemes;
+    sectionOrder: string[];
     header: CvHeaderType;
     summary: string;
     skills: CvSkillType[];

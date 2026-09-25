@@ -2,11 +2,14 @@ import { defineStore } from 'pinia';
 import { useLocalStorage } from '@vueuse/core';
 import type {CvDataType} from "../types/cv.ts";
 import {CvThemes} from "../types/themes/themeTypes.ts";
+import {ref} from "vue";
 
 export const useCvStore = defineStore('cv', () => {
+    const showCvPreviewMobile = ref(false);
     const cvData = useLocalStorage<CvDataType>('ats-cv-data', {
         selectedFont: 'Arial, sans-serif',
         selectedColor: '#b30909',
+        sectionOrder: ['education', 'experience', 'skills', /*'certificates'*/],
         selectedTheme: CvThemes.DEFAULT,
         header: {
             name: 'Sarah Connor',
@@ -61,5 +64,5 @@ export const useCvStore = defineStore('cv', () => {
         ]
     });
 
-    return { cvData };
+    return { cvData, showCvPreviewMobile };
 });

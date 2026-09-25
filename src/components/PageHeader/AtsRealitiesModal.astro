@@ -1,14 +1,10 @@
 ---
-import { Icon } from "astro-icon/components";
-import Button from "../common/Button.vue";
-import Modal from "../common/Modal.astro";
+import InfoModal from "./common/InfoModal.astro";
+import HeaderButton from "./common/HeaderButton.astro";
 ---
 
-<Modal id="ats-modal" title="Reality of ATS Parsing">
-    <Button slot="trigger">
-        <Icon name="material-symbols-light:info-outline" slot="icon" class="w-6 h-6" />
-        Reality of ATS Parsing
-    </Button>
+<InfoModal id="ats-modal" title="Reality of ATS Parsing">
+    <HeaderButton slot="trigger" text="Reality of ATS Parsing" icon="material-symbols-light:info-outline" />
     <ul class="space-y-5 text-base">
         <li>
             <strong class="font-bold">Visuals are Invisible:</strong> ATS parsers do not care about your design. Complex formatting like tables, text boxes, columns, and graphics will actively disrupt the scan and scramble your text into unreadable gibberish.
@@ -32,4 +28,4 @@ import Modal from "../common/Modal.astro";
             <strong class="font-bold">Headers and Footers are Dead Zones:</strong> Do not put your contact information in the document header or footer. Many parsers completely ignore these fields.
         </li>
     </ul>
-</Modal>
+</InfoModal>

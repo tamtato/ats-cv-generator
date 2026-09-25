@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Button from "../../common/Button.vue";
 
 const triggerPrint = () => {
   window.print();
@@ -6,11 +7,11 @@ const triggerPrint = () => {
 </script>
 
 <template>
-  <button
+  <Button
       data-testid="download-pdf-button"
       @click="triggerPrint"
-      class="bg-gray-800 cursor-pointer text-white px-4 py-4 w-full shadow hover:bg-indigo-600 transition text-sm font-medium"
-  >
-    Download PDF
-  </button>
+      variant="primary"
+      text="Download PDF"
+      icon="material-symbols-light:download-2"
+  />
 </template>
