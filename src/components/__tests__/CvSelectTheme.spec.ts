@@ -1,7 +1,7 @@
 import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
-import CvSelectTheme from '../EditorSidebar/sections/CvSelectTheme.vue';
+import CvSelectTheme from '../CvBuilderApp/EditorSidebar/sections/CvSelectTheme.vue';
 import { useCvStore } from '../../stores/cvStore';
 import {CvThemes} from "../../types/themes/themeTypes.ts";
 

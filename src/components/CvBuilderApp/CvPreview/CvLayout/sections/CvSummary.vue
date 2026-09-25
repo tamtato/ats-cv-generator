@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {useActiveTheme} from "../../../../composables/useActiveTheme.ts";
-import {useCvStore} from "../../../../stores/cvStore.ts";
+import {useActiveTheme} from "../../../../../composables/useActiveTheme.ts";
+import {useCvStore} from "../../../../../stores/cvStore.ts";
 import SectionWrapper from "../common/SectionWrapper.vue";
 
 const cvStore = useCvStore();

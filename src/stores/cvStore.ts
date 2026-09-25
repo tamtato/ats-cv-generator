@@ -5,7 +5,13 @@ import {CvThemes} from "../types/themes/themeTypes.ts";
 import {ref} from "vue";
 
 export const useCvStore = defineStore('cv', () => {
-    const showCvPreviewMobile = ref(false);
+    const activeTabId = ref('basicInfo');
+    const mobileOverlay = ref<'none' | 'editor' | 'preview'>('none');
+    const openEditorTab = (tabId: string) => {
+        activeTabId.value = tabId;
+        mobileOverlay.value = 'editor';
+    };
+
     const cvData = useLocalStorage<CvDataType>('ats-cv-data', {
         selectedFont: 'Arial, sans-serif',
         selectedColor: '#b30909',
@@ -64,5 +70,10 @@ export const useCvStore = defineStore('cv', () => {
         ]
     });
 
-    return { cvData, showCvPreviewMobile };
+    return {
+        cvData,
+        activeTabId,
+        mobileOverlay,
+        openEditorTab
+    };
 });

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {computed} from "vue";
-import {useActiveTheme} from "../../../../composables/useActiveTheme.ts";
-import {useCvStore} from "../../../../stores/cvStore.ts";
+import {useActiveTheme} from "../../../../../composables/useActiveTheme.ts";
+import {useCvStore} from "../../../../../stores/cvStore.ts";
 
 const cvStore = useCvStore();
 

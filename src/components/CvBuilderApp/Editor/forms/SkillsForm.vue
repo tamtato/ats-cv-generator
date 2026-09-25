@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCvStore } from '../../../stores/cvStore.ts';
+import { useCvStore } from '../../../../stores/cvStore.ts';
 
 const cvStore = useCvStore();
 

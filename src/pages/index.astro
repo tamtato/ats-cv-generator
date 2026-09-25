@@ -1,8 +1,8 @@
 ---
 import '../styles/global.css';
-import EditorSidebar from '../components/EditorSidebar/EditorSidebar.vue';
-import PageHeader from "../components/PageHeader/PageHeader.astro";
-import CvPreview from '../components/CvPreview/CvPreview.vue';
+import CvBuilderApp from '../components/CvBuilderApp/CvBuilderApp.vue';
+import PageHeader from '../components/PageHeader/PageHeader.astro';
+
 ---
 
 <html lang="en">
@@ -13,15 +13,17 @@ import CvPreview from '../components/CvPreview/CvPreview.vue';
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></head>
-<body class="m-0 p-0 h-screen">
+<body class="m-0 p-0 h-screen flex flex-col font-body bg-gray-50 print:bg-white print:h-auto">
 
-<main class="h-full w-full bg-gray-100 p-3 lg:p-6 flex flex-col lg:flex-row flex-1 overflow-hidden relative font-body print:p-0 print:bg-white print:overflow-visible print:block print:h-auto">
-	<div class="w-full xl:w-3/5 flex flex-col gap-2 print:hidden">
-		<PageHeader />
-		<EditorSidebar client:only="vue" />
-	</div>
-	<CvPreview client:only="vue" />
+<!-- Header area (Hidden when printing) -->
+<header class="print:hidden pb-6 ">
+	<PageHeader />
+</header>
 
+<!-- Main App Shell takes up the remaining vertical space -->
+<main class="flex-1 w-full overflow-hidden print:hidden">
+	<CvBuilderApp client:only="vue" />
 </main>
+
 </body>
 </html>

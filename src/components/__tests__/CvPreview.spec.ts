@@ -3,7 +3,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import { useCvStore } from '../../stores/cvStore';
 import { CvThemes } from '../../types/themes/themeTypes.ts';
-import CvPreview from '../CvPreview/CvPreview.vue';
+import CvPreview from '../CvBuilderApp/CvPreview/CvPreview.vue';
 
 
 describe('CvPreview.vue', () => {

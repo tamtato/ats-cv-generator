@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import CvLayout from "./CvLayout/CvLayout.vue";
-import ResponsiveCard from "../common/ResponsiveCard.vue";
-import Button from "../common/Button.vue";
-import {useCvStore} from "../../stores/cvStore.ts";
-
-const cvStore = useCvStore()
-
 const wrapperRef = ref<HTMLElement | null>(null);
 const contentRef = ref<HTMLElement | null>(null);
 
@@ -57,52 +51,45 @@ const unscaledHeight = computed(() => `calc(3cm + (${pageCount.value} * 266mm))`
 </script>
 
 <template>
-    <ResponsiveCard
-        v-model:isOpen="cvStore.showCvPreviewMobile"
-        title="Preview"
-        breakpoint="xl"
-    >
-      <KeepAlive>
-        <div ref="wrapperRef" class="w-full" >
-          <div
-                class="relative print:hidden mx-auto "
-              :style="{
+
+  <div ref="wrapperRef" class="w-full" >
+    <div
+        class="relative print:hidden mx-auto "
+        :style="{
         width: `calc(${scaleFactor} * 210mm)`,
         height: `calc(${scaleFactor} * ${unscaledHeight})`
       }"
-          >
-            <div
-                class="cv-paper bg-white absolute top-0 left-0 origin-top-left border border-gray-300"
-                :style="{
+    >
+      <div
+          class="cv-paper bg-white absolute top-0 left-0 origin-top-left"
+          :style="{
           width: '210mm',
           padding: '1.5cm',
           minHeight: unscaledHeight,
           transform: `scale(${scaleFactor})`
         }"
-            >
-              <template v-for="(pos, index) in cutLines" :key="index">
-                <div
-                    class="absolute -left-10 -right-10 z-10 border-b-2 border-dashed border-slate-400"
-                    :style="{ top: pos }"
-                ></div>
-              </template>
-              <div ref="contentRef">
-                <CvLayout />
-              </div>
-
-            </div>
-          </div>
+      >
+        <template v-for="(pos, index) in cutLines" :key="index">
+          <div
+              class="absolute -left-10 -right-10 z-10 border-b-2 border-dashed border-slate-400"
+              :style="{ top: pos }"
+          ></div>
+        </template>
+        <div ref="contentRef">
+          <CvLayout />
         </div>
-      </KeepAlive>
-    </ResponsiveCard>
+
+      </div>
+    </div>
+  </div>
 
 
 
 
-  <!--    CONTENT THAT WILL BE DOWNLOADED TO PDF    -->
+<!--  &lt;!&ndash;    CONTENT THAT WILL BE DOWNLOADED TO PDF    &ndash;&gt;
   <div class="cv-paper bg-white hidden print:block print:relative"
        :style="{ width: '210mm', minHeight: `calc(3cm + (${pageCount} * 266mm))` }"
   >
     <CvLayout />
-  </div>
+  </div>-->
 </template>

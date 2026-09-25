@@ -1,7 +1,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useCvStore } from "../../../stores/cvStore.ts";
+import { useCvStore } from "../../../../stores/cvStore.ts";
 import CvSummary from "./sections/CvSummary.vue";
 import CvHeader from "./sections/CvHeader.vue";
 import CvEducation from "./sections/CvEducation.vue";

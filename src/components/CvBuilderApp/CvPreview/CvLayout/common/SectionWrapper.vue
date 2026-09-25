@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useActiveTheme} from "../../../../composables/useActiveTheme.ts";
+import {useActiveTheme} from "../../../../../composables/useActiveTheme.ts";
 
 defineProps<{ header: string }>();
 

@@ -1,7 +1,7 @@
 import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
-import CvEducationEditor from '../EditorSidebar/sections/CvEducationEditor.vue';
+import CvEducationEditor from '../CvBuilderApp/EditorSidebar/sections/CvEducationEditor.vue';
 import { useCvStore } from '../../stores/cvStore';
 
 describe('CvEducationEditor.vue', () => {
