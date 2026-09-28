@@ -7,7 +7,7 @@ export interface FormConfig {
 }
 
 export const FORMS: Record<FormId, FormConfig> = {
-    basicInfo: { id: 'basicInfo', label: 'Basic Info', icon: 'material-symbols-light:person-play-outline' },
+    basicInfo: { id: 'basicInfo', label: 'Basic Info & Summary', icon: 'material-symbols-light:person-play-outline' },
     education: { id: 'education', label: 'Education', icon: 'material-symbols-light:sports-martial-arts' },
     experience: { id: 'experience', label: 'Experience', icon: 'material-symbols-light:surfing' },
     skills: { id: 'skills', label: 'Skills', icon: 'material-symbols-light:skateboarding' },

@@ -6,6 +6,7 @@ import DraggableList from "../../common/DraggableList.vue";
 import Button from "../../common/Button.vue";
 import ImportJSON from "./ImportJSON.vue";
 import {DRAGGABLE_SECTIONS, FORMS} from "../../../types/forms.ts";
+import ThemeForm from "../FormContainer/forms/ThemeForm.vue";
 
 const cvStore = useCvStore();
 
@@ -17,9 +18,9 @@ const cvStore = useCvStore();
     <p class="font-light text-sm mb-4">This project is 100% serverless. Your CV data never leaves your device and is saved locally in your browser.</p>
       <ImportJSON />
     </div>
-    <div class="w-fit flex flex-col gap-6 py-6 lg:py-8 lg:gap-8 flex-1">
+    <div class="flex flex-col gap-4 py-6 lg:py-8 flex-1">
       <Button
-          variant="text"
+          variant="secondary"
           :text="FORMS.basicInfo.label"
           :icon="FORMS.basicInfo.icon"
           @click="cvStore.openFormById(FORMS.basicInfo.id)"
@@ -32,13 +33,15 @@ const cvStore = useCvStore();
           @select="cvStore.openFormById"
       />
       <Button
-          variant="text"
+          variant="secondary"
           :text="FORMS.theme.label"
           :icon="FORMS.theme.icon"
           @click="cvStore.openFormById(FORMS.theme.id)"
           :active="cvStore.activeFormId === FORMS.theme.id"
-      />    </div>
-    <div class="flex gap-4 lg:flex-col mt-auto">
+      />
+
+    </div>
+    <div class="flex gap-4 lg:flex-col mt-auto pt-6 border-t border-gray-200">
       <ExportJSON />
       <DownloadPdfButton />
       <div class="block xl:hidden mt-4 w-full">

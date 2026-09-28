@@ -18,14 +18,16 @@ const theme = useActiveTheme();
         :sub-title="job.company"
         :start-date="job.startDate"
         :end-date="job.endDate"
+        :current="job.current"
     >
       <ul :class="theme.experience.ul">
         <li
             v-for="(bullet, index) in job.bullets"
             :key="index"
-            :class="`relative break-inside-auto ${theme.experience.li}`"
+            :class="['relative break-inside-auto', theme.experience.li, !bullet && 'italic opacity-40']"
         >
-          <span class="text-[12px] font-bold">-</span> {{ bullet }}
+          <span class="text-[12px] font-bold">•</span>
+          {{ bullet || 'Short description about what you did...' }}
         </li>
       </ul>
     </BlockItem>

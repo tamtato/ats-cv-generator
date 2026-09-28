@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useCvStore } from '../../../../stores/cvStore.ts';
+import TextField from "../../../common/TextField.vue";
+import Button from "../../../common/Button.vue";
 
 const cvStore = useCvStore();
 
@@ -10,6 +12,7 @@ const addEducation = () => {
     school: '',
     startDate: '',
     endDate: '',
+    current: false,
     description: ''
   });
 };
@@ -21,54 +24,75 @@ const removeEducation = (index: number) => {
 </script>
 
 <template>
-  <section class="flex flex-col gap-4">
-    <h3 class="font-semibold text-gray-700 border-b pb-1">Education</h3>
-
+  <section class="flex flex-col gap-4 lg:gap-6">
     <div
         v-for="(education, educationIndex) in cvStore.cvData.education"
         :key="education.id"
-        class="p-4 bg-white border rounded shadow-sm relative flex flex-col gap-3"
+        class="relative flex flex-col gap-4  p-4 pt-1 border border-gray-100"
     >
-      <button
-          data-testid="removeEducation"
-          @click="removeEducation(educationIndex)"
-          class="absolute top-2 right-2 text-red-500 hover:text-red-700 text-xs font-bold"
-      >
-        ✕ Remove Education
-      </button>
+      <div class="flex items-center justify-between">
+        <h3 class="flex-1 text-indigo-600 font-header uppercase tracking-widest">
+          Education {{educationIndex + 1}}
+        </h3>
+        <Button
+            data-testid="removeEducation"
+            @click="removeEducation(educationIndex)"
+            variant="text"
+            color="red"
+            text=""
+            icon="material-symbols-light:delete-outline"
+            class="justify-end flex-1"
+        />
+      </div>
+        <div class="grid lg:grid-cols-2 gap-3">
+        <TextField
+            label="Education Title"
+            v-model="education.title"
+            placeholder="Ex: Advanced Tactical Engineering"
+        />
+        <TextField
+            label="School"
+            v-model="education.school"
+            placeholder="Ex: Resistance Training Academy"
+        />
 
-      <div class="grid grid-cols-2 gap-3 mt-4">
-        <div class="col-span-2">
-          <label class="block text-xs font-medium text-gray-600 mb-1">Education Title</label>
-          <input data-testid="title-education" type="text" v-model="education.title" class="w-full p-2 border rounded text-sm" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-gray-600 mb-1">School</label>
-          <input data-testid="school-education" type="text" v-model="education.school" class="w-full p-2 border rounded text-sm" />
-        </div>
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <label class="block text-xs font-medium text-gray-600 mb-1">Start Date</label>
-            <input data-testid="startDate-education" type="text" v-model="education.startDate" placeholder="Aug 2024" class="w-full p-2 border rounded text-sm" />
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-gray-600 mb-1">End Date</label>
-            <input data-testid="endDate-education" type="text" v-model="education.endDate" placeholder="Present" class="w-full p-2 border rounded text-sm" />
-          </div>
-        </div>
       </div>
-      <div>
-        <label class="block text-xs font-medium text-gray-600 mb-1">Description</label>
-        <textarea data-testid="description-education" v-model="education.description" rows="3" class="w-full p-2 border rounded text-sm"></textarea>
+      <TextField
+          label="I'm currently studying here"
+          type="checkbox"
+          v-model="education.current"
+          @update:model-value="(val) => { if (val) education.endDate = ''; }"
+
+      />
+      <div class="flex items-center gap-3 ">
+        <TextField
+            label="Start Date"
+            v-model="education.startDate"
+            placeholder="DD/MM/YY"
+            type="date"
+        />
+        <TextField
+            :disabled="education.current"
+            label="End Date"
+            v-model="education.endDate"
+            placeholder="DD/MM/YY"
+            type="date"
+        />
       </div>
+      <TextField
+          label="Description"
+          v-model="education.description"
+          placeholder="Ex: Completed an intensive program focused on guerrilla tactics, cybernetic countermeasures, and temporal anomaly navigation."
+          isTextarea
+      />
+
     </div>
-
-    <button
+    <Button
         data-testid="addEducation"
+        variant="secondary"
+        text="Add Education"
         @click="addEducation"
-        class="w-full py-2 border-2 border-dashed border-gray-300 text-gray-600 rounded hover:bg-gray-50 hover:border-gray-400 transition text-sm font-medium"
-    >
-      + Add Education
-    </button>
+        icon="material-symbols-light:note-stack-add-outline-sharp"
+    />
   </section>
 </template>

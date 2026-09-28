@@ -9,7 +9,7 @@ const theme = useActiveTheme();
 </script>
 
 <template>
-  <SectionWrapper v-if="cvStore.cvData.skills?.length > 0" header="Summary">
+  <SectionWrapper v-if="cvStore.cvData.summary?.length > 0" header="Summary">
     <p :class="theme.summary.text">{{ cvStore.cvData.summary }}</p>
   </SectionWrapper>
 </template>

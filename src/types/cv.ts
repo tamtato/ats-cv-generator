@@ -9,8 +9,9 @@ export interface CvExperienceType {
     id: string;
     title: string;
     company: string;
-    startDate?: string;
-    endDate?: string;
+    startDate: string;
+    endDate: string;
+    current: boolean;
     bullets: string[];
 }
 
@@ -18,19 +19,20 @@ export interface CvEducationType {
     id: string;
     title: string;
     school: string;
-    startDate?: string;
-    endDate?: string;
+    startDate: string;
+    endDate: string;
+    current: boolean;
     description: string;
 }
 
 export interface CvHeaderType {
     name: string;
     title: string;
-    phone?: string;
-    email?: string;
-    location?: string;
-    github?: string;
-    linkedin?: string;
+    phone: string;
+    email: string;
+    location: string;
+    github: string;
+    linkedin: string;
 }
 
 export interface CvDataType {

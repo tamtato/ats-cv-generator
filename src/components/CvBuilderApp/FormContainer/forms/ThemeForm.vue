@@ -1,26 +1,47 @@
 <script setup lang="ts">
 import {useCvStore} from "../../../../stores/cvStore.ts";
 import {CvThemes} from "../../../../types/themes/themeTypes.ts";
+import SelectDropdown from "../../../common/SelectDropdown.vue";
+import {atsSafeFonts} from "../../../../types/themes/fonts.ts";
+import TextField from "../../../common/TextField.vue";
+import ColorPicker from "../../../common/ColorPicker.vue";
+import {Icon} from "@iconify/vue";
+import {FORMS} from "../../../../types/forms.ts";
 
 const cvStore = useCvStore();
+
 
 </script>
 
 <template>
+  <section class="flex flex-col gap-4 lg:gap-6 w-full lg:w-1/3">
 
-      <label class="block text-xs font-medium text-gray-600 mb-1">CV Themes (ATS Safe)</label>
-      <select
-          data-testid="themeSelect"
+
+    <SelectDropdown
+        label="Header Font"
+        test-id="fontSelect"
+        v-model="cvStore.cvData.selectedFont"
+        :options="Object.values(atsSafeFonts)"
+    />
+    <SelectDropdown
+        label="Body Font"
+        test-id="fontSelect"
+        v-model="cvStore.cvData.selectedFont"
+        :options="Object.values(atsSafeFonts)"
+    />
+
+
+      <SelectDropdown
+          label="Themes"
+          test-id="themeSelect"
           v-model="cvStore.cvData.selectedTheme"
-          class="w-full border border-gray-300 rounded px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
-      >
-        <option
-            v-for="theme in CvThemes"
-            :key="theme"
-            :value="theme"
-        >
-          {{ theme }}
-        </option>
-      </select>
+          :options="Object.values(CvThemes)"
+      />
+    <ColorPicker
+        label="Theme Accent Color"
+        v-model="cvStore.cvData.selectedColor"
+    />
 
+
+  </section>
 </template>

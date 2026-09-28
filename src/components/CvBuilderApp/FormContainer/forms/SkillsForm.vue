@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useCvStore } from '../../../../stores/cvStore.ts';
+import TextField from "../../../common/TextField.vue";
+import Button from "../../../common/Button.vue";
 
 const cvStore = useCvStore();
 
@@ -19,37 +21,46 @@ const removeSkill = (index: number) => {
 </script>
 
 <template>
-  <section class="flex flex-col gap-4">
-    <h3 class="font-semibold text-gray-700 border-b pb-1">Technical Skills</h3>
-
+  <section class="flex flex-col gap-4 lg:gap-6">
     <div
-        v-for="(skill, index) in cvStore.cvData.skills"
-        :key="index"
-        class="p-4 bg-white border rounded shadow-sm relative flex flex-col gap-3"
+        v-for="(skill, skillIndex) in cvStore.cvData.skills"
+        :key="skillIndex"
+        class="relative flex flex-col gap-4 p-4 pt-1 border border-gray-100"
     >
-      <button
-          data-testid="removeSkill"
-          @click="removeSkill(index)"
-          class="absolute top-2 right-2 text-red-500 hover:text-red-700 text-xs font-bold"
-      >
-        ✕ Remove
-      </button>
+      <div class="flex items-center justify-between">
+        <h3 class="flex-1 text-indigo-600 font-header uppercase tracking-widest">
+          Skills {{skillIndex + 1}}
+        </h3>
+        <Button
+            data-testid="removeSkill"
+            @click="removeSkill(skillIndex)"
+            variant="text"
+            color="red"
+            text=""
+            icon="material-symbols-light:delete-outline"
 
-      <div class="mt-2">
-        <label class="block text-xs font-medium text-gray-600 mb-1">Category (e.g., Languages, Frameworks)</label>
-        <input data-testid="skillCategory" name="skillCategory" type="text" v-model="skill.category" class="w-full p-2 border rounded text-sm mb-3" />
-
-        <label class="block text-xs font-medium text-gray-600 mb-1">Skills (comma separated)</label>
-        <textarea data-testid="skillItems" name="skillItems" v-model="skill.items" rows="2" class="w-full p-2 border rounded text-sm"></textarea>
+            class="justify-end flex-1"
+        />
       </div>
+      <TextField
+          label="Category"
+          v-model="skill.category"
+          placeholder="Ex: Cybernetics"
+      />
+      <TextField
+          label="Skills"
+          v-model="skill.items"
+          placeholder="Ex: T-800 hardware analysis, neural-net processor destruction, CPU reprogramming"
+          isTextarea
+          rows="2"
+      />
     </div>
-
-    <button
+    <Button
         data-testid="addSkill"
+        variant="secondary"
+        text="Add Skill Category"
         @click="addSkill"
-        class="w-full py-2 border-2 border-dashed border-gray-300 text-gray-600 rounded hover:bg-gray-50 hover:border-gray-400 transition text-sm font-medium"
-    >
-      + Add Skill Category
-    </button>
+        icon="material-symbols-light:note-stack-add-outline-sharp"
+    />
   </section>
 </template>

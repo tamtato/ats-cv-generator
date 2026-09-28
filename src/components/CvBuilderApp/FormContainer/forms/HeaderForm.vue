@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useCvStore } from '../../../../stores/cvStore.ts';
+import TextField from "../../../common/TextField.vue";
+import Button from "../../../common/Button.vue";
 
 const cvStore = useCvStore();
 </script>
@@ -7,59 +9,63 @@ const cvStore = useCvStore();
 <template>
   <div class="flex flex-col gap-6">
     <!-- Basic Info -->
-    <section class="flex flex-col gap-3">
-      <h3 class="font-semibold text-gray-700 border-b pb-1">Basic Info</h3>
-      <div class="grid grid-cols-2 gap-3">
-        <div>
-          <label class="block text-xs font-medium text-gray-600 mb-1">Full Name</label>
-          <input data-testid="fullName" type="text" v-model="cvStore.cvData.header.name" maxlength="100" class="w-full p-2 border rounded text-sm" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-gray-600 mb-1">Target Title</label>
-          <input data-testid="title" type="text" v-model="cvStore.cvData.header.title" maxlength="100" class="w-full p-2 border rounded text-sm" />
-        </div>
+    <section class="flex flex-col gap-3 border-b border-b-gray-200 pb-6">
+      <div class="grid lg:grid-cols-2 gap-3">
+        <TextField
+            label="Your name"
+            v-model="cvStore.cvData.header.name"
+            placeholder="Sarah Connor"
+        />
+        <TextField
+            label="What is it you do"
+            v-model="cvStore.cvData.header.title"
+            placeholder="Lead Anti-AGI Tactical Engineer"
+        />
       </div>
     </section>
 
     <!-- Contact Details -->
-    <section class="flex flex-col gap-3">
-      <h3 class="font-semibold text-gray-700 border-b pb-1">Contact</h3>
-      <div class="grid grid-cols-2 gap-3">
-        <div>
-          <label class="block text-xs font-medium text-gray-600 mb-1">Email</label>
-          <input data-testid="email" type="email" v-model="cvStore.cvData.header.email" maxlength="100" class="w-full p-2 border rounded text-sm" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-gray-600 mb-1">Phone</label>
-          <input data-testid="phone" type="text" v-model="cvStore.cvData.header.phone" maxlength="30" class="w-full p-2 border rounded text-sm" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-gray-600 mb-1">Location</label>
-          <input data-testid="location" type="text" v-model="cvStore.cvData.header.location" maxlength="100" class="w-full p-2 border rounded text-sm" />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-gray-600 mb-1">GitHub</label>
-          <input
-              data-testid="github"
-              type="text"
-              v-model="cvStore.cvData.header.github"
-              @blur="cvStore.cvData.header.github = cvStore.cvData.header.github?.replace(/^(https?:\/\/|javascript:)/i, '')"
-              maxlength="100"
-              class="w-full p-2 border rounded text-sm"
-          />
-        </div>
-        <div class="col-span-2">
-          <label class="block text-xs font-medium text-gray-600 mb-1">LinkedIn</label>
-          <input
-              data-testid="linkedin"
-              type="text"
-              v-model="cvStore.cvData.header.linkedin"
-              @blur="cvStore.cvData.header.linkedin = cvStore.cvData.header.linkedin?.replace(/^(https?:\/\/|javascript:)/i, '')"
-              maxlength="100"
-              class="w-full p-2 border rounded text-sm"
-          />
-        </div>
+    <section class="flex flex-col gap-3 border-b border-b-gray-200 pb-6">
+      <div class="grid lg:grid-cols-2 gap-3">
+        <TextField
+            label="Email"
+            v-model="cvStore.cvData.header.email"
+            placeholder="Sarah Connor"
+            type="email"
+        />
+        <TextField
+            label="Phone"
+            v-model="cvStore.cvData.header.phone"
+            placeholder="+00123456789"
+            type="number"
+        />
+        <TextField
+            label="Location"
+            v-model="cvStore.cvData.header.location"
+            placeholder="California"
+        />
+
+<!--        <TextField
+            label="GitHub"
+            test-id="github"
+            v-model="cvStore.cvData.header.github"
+            @blur="cvStore.cvData.header.github = cvStore.cvData.header.github?.replace(/^(https?:\/\/|javascript:)/i, '')"
+        />-->
+        <TextField
+            label="LinkedIn"
+            test-id="linkedin"
+            v-model="cvStore.cvData.header.linkedin"
+            @blur="cvStore.cvData.header.linkedin = cvStore.cvData.header.linkedin?.replace(/^(https?:\/\/|javascript:)/i, '')"
+        />
+          <Button class="h-10.5 self-end " variant="text" text="Add additional link" icon="material-symbols-light:add-link"/>
+
       </div>
     </section>
+    <TextField
+        label="Summary"
+        v-model="cvStore.cvData.summary"
+        placeholder="A pragmatic tactical engineer specializing in the physical dismantling of rogue neural networks, explosive systems architecture, and preventing temporal paradoxes. Deeply opposed to hype-driven AI development and cybernetic integration."
+        isTextarea
+    />
   </div>
 </template>

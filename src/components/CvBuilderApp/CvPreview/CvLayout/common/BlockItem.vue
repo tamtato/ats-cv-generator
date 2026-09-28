@@ -6,6 +6,7 @@ defineProps<{
   subTitle: string;
   startDate: string | undefined;
   endDate: string | undefined;
+  current: boolean | undefined;
 }>();
 
 const theme = useActiveTheme();
@@ -14,13 +15,17 @@ const theme = useActiveTheme();
 
 <template>
     <div :class="theme.blockItem.wrapper">
-      <h5 :class="theme.blockItem.title">{{ title }}</h5>
+      <h5 :class="[theme.blockItem.title, !title && 'italic opacity-40']">{{ title || 'Title' }}</h5>
       <div :class="theme.blockItem.subTitle.wrapper">
-        <h6 :class="theme.blockItem.subTitle.title">{{ subTitle }}:</h6>
+        <h6 :class="[theme.blockItem.subTitle.title, !subTitle && 'italic opacity-40']">{{ subTitle || 'SubTitle' }}:</h6>
         <h6 :class="theme.blockItem.subTitle.dates">
-          {{ startDate || 'yymmdd' }} -
-          <span :class="endDate?.toLowerCase().includes('present') ? theme.blockItem.subTitle.endDate : ''">
-            {{ endDate || 'yymmdd' }}
+          <span :class="!startDate && 'italic opacity-40'">{{ startDate || 'yymmdd' }} - </span>
+          <span :class="[
+              current ? theme.blockItem.subTitle.endDate : '',
+              !current && !endDate && 'italic opacity-40'
+              ]"
+          >
+            {{ current ? 'Present' : (endDate || 'yymmdd') }}
           </span>
         </h6>
       </div>

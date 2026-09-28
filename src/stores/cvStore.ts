@@ -39,7 +39,8 @@ export const useCvStore = defineStore('cv', () => {
                 title: 'Systems Saboteur & Operations Lead',
                 company: 'The Human Resistance',
                 startDate: '1997',
-                endDate: 'Present',
+                endDate: '',
+                current: true,
                 bullets: [
                     'Architected the physical destruction of the Cyberdyne Systems primary development lab, preventing the deployment of the Skynet system.',
                     'Mentored future resistance leadership in tactical survival and guerrilla warfare.',
@@ -52,6 +53,7 @@ export const useCvStore = defineStore('cv', () => {
                 company: 'Pescadero State Hospital',
                 startDate: '1994',
                 endDate: '1995',
+                current: false,
                 bullets: [
                     'Maintained peak physical conditioning under severe constraints using improvised tactical training.',
                     'Engineered a solo breakout utilizing a paperclip and liquid rooter, neutralizing security personnel without lethal force.',
@@ -65,6 +67,7 @@ export const useCvStore = defineStore('cv', () => {
                 school: 'Resistance Training Academy',
                 startDate: '1995',
                 endDate: '1997',
+                current: false,
                 description: 'Completed an intensive program focused on guerrilla tactics, cybernetic countermeasures, and temporal anomaly navigation.'
             },
         ]
