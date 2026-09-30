@@ -6,13 +6,13 @@ import MobileDrawer from '../common/MobileDrawer.vue';
 
 import CvPreview from './CvPreview/CvPreview.vue';
 import SidebarMenu from "./SidebarMenu/SidebarMenu.vue";
-import FormContainer from "./FormContainer/FormContainer.vue";
 import CvLayout from "./CvPreview/CvLayout/CvLayout.vue";
-import {type FormId, FORMS} from "../../types/forms.ts";
+import {type CvConfigId, CV_CONFIGS} from "../../types/cvConfigs.ts";
+import CvConfig from "./CvConfig/CvConfig.vue";
 
 const cvStore = useCvStore();
 
-const activeForm = computed(() => FORMS[cvStore.activeFormId as FormId]);
+const activeCvConfig = computed(() => CV_CONFIGS[cvStore.activeCvConfigId as CvConfigId]);
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const activeForm = computed(() => FORMS[cvStore.activeFormId as FormId]);
 
     <!-- 2. DESKTOP EDITOR (Hidden on mobile) -->
     <section class="hidden md:block flex-1 py-4 lg:py-6 h-full overflow-y-auto">
-      <FormContainer />
+      <CvConfig />
     </section>
 
     <!-- 3. DESKTOP PREVIEW (Hidden on mobile & small desktop) -->
@@ -34,12 +34,12 @@ const activeForm = computed(() => FORMS[cvStore.activeFormId as FormId]);
     <!-- MOBILE DRAWERS -->
     <MobileDrawer
         class="md:hidden"
-        :isOpen="cvStore.mobileOverlay === 'form'"
-        :title="activeForm?.label || 'Update CV Section'"
-        :icon="activeForm?.icon"
+        :isOpen="cvStore.mobileOverlay === 'cvConfig'"
+        :title="activeCvConfig?.label || 'Update CV Section'"
+        :icon="activeCvConfig?.icon"
         @close="cvStore.mobileOverlay = 'none'"
     >
-      <FormContainer />
+      <CvConfig />
     </MobileDrawer>
     <MobileDrawer
         class="xl:hidden"

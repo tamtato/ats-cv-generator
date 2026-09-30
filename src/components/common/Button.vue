@@ -21,13 +21,13 @@ const colorStyles = computed(() => {
     primary: {
       primary: 'bg-gray-800 text-white hover:bg-indigo-600',
       secondary: 'border border-gray-800 text-gray-800 hover:text-indigo-600 hover:border-indigo-600',
-      text: 'px-0 py-2 text-gray-800 hover:text-indigo-600',
+      text: 'px-0 py-2 text-gray-800 hover:text-indigo-600 w-fit',
       active: 'text-indigo-600 border-indigo-600'
     },
     red: {
       primary: 'bg-red-600 text-white hover:bg-red-700',
       secondary: 'border border-red-600 text-red-600 hover:bg-red-50 hover:border-red-700 hover:text-red-700',
-      text: 'px-0 py-2 text-red-600 hover:text-red-700',
+      text: 'px-0 py-2 text-red-600 hover:text-red-700 w-fit',
       active: 'text-red-700 border-red-700'
     }
   };
@@ -39,7 +39,7 @@ const colorStyles = computed(() => {
 <template>
   <button
       :class="[
-      'w-full flex items-center font-header uppercase gap-2 text-sm transition-colors cursor-pointer tracking-widest print:hidden',
+      'flex items-center font-header uppercase gap-2 text-sm transition-colors cursor-pointer tracking-widest print:hidden',
       colorStyles[variant],
       ['primary', 'secondary'].includes(variant) && 'justify-center p-3',
       ['secondary', 'text', 'dotted'].includes(variant) && active && colorStyles.active

@@ -7,6 +7,6 @@ export function useActiveTheme() {
     const store = useCvStore();
     return computed(() => ({
         ...defaultTheme,
-        ...themeDefinitions[store.cvData.selectedTheme]
+        ...themeDefinitions[store.cvData.theme.selectedTheme]
     }));
 }

@@ -28,7 +28,7 @@ defineEmits<{
       </button>
     </div>
 
-    <div class="flex-1 overflow-y-auto p-4 bg-white">
+    <div class="flex-1 overflow-y-auto bg-white">
       <slot />
     </div>
   </div>

@@ -2,6 +2,8 @@
 import { useCvStore } from '../../../../stores/cvStore.ts';
 import Button from "../../../common/Button.vue";
 import TextField from "../../../common/TextField.vue";
+import ConfigBlockWrapper from "../common/ConfigBlockWrapper.vue";
+import ConfigWrapper from "../common/ConfigWrapper.vue";
 
 const cvStore = useCvStore();
 
@@ -31,17 +33,15 @@ const removeBullet = (expIndex: number, bulletIndex: number) => {
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 lg:gap-6">
-
-    <div
+  <ConfigWrapper>
+    <ConfigBlockWrapper
         v-for="(exp, expIndex) in cvStore.cvData.experience"
         :key="exp.id"
-        class="relative flex flex-col gap-4 p-4 pt-1 border border-gray-100"
     >
-      <div class="flex items-center justify-between">
-        <h3 class="flex-1 text-indigo-600 font-header uppercase tracking-widest">
-          Experience {{expIndex + 1}}
-        </h3>
+      <template #title>
+        Experience {{expIndex + 1}}
+      </template>
+      <template #titleAction>
         <Button
             data-testid="removeExp"
             @click="removeExp(expIndex)"
@@ -49,10 +49,8 @@ const removeBullet = (expIndex: number, bulletIndex: number) => {
             color="red"
             text=""
             icon="material-symbols-light:delete-outline"
-            class="justify-end flex-1"
         />
-      </div>
-
+      </template>
       <div class="grid lg:grid-cols-2 gap-3">
         <TextField
             label="Experience Title"
@@ -86,7 +84,6 @@ const removeBullet = (expIndex: number, bulletIndex: number) => {
             placeholder="DD/MM/YY"
             type="date"
         />
-
       </div>
 
       <!-- Bullets -->
@@ -98,50 +95,40 @@ const removeBullet = (expIndex: number, bulletIndex: number) => {
             :key="bulletIndex"
             class="flex gap-2 items-center"
         >
-          <div class="flex-1">
-          <TextField
-              v-model="exp.bullets[bulletIndex]"
-              data-testid="bulletPoint"
-              placeholder="Ex:Architected the physical destruction of the Cyberdyne Systems primary development lab, preventing the deployment of the Skynet system."
-              rows="3"
-              isTextarea
-          />
-          </div>
-        <div>
-          <Button
-              data-testid="removeBullet"
-              @click="removeBullet(expIndex, bulletIndex)"
-              variant="text"
-              color="red"
-              text=""
-              icon="material-symbols-light:delete-outline"
-          />
-        </div>
+            <TextField
+                v-model="exp.bullets[bulletIndex]"
+                data-testid="bulletPoint"
+                placeholder="Ex:Architected the physical destruction of the Cyberdyne Systems primary development lab, preventing the deployment of the Skynet system."
+                rows="3"
+                isTextarea
+            />
+            <Button
+                data-testid="removeBullet"
+                @click="removeBullet(expIndex, bulletIndex)"
+                variant="text"
+                color="red"
+                text=""
+                icon="material-symbols-light:delete-outline"
+            />
+
         </div>
         <div class="flex">
-
           <Button
-            data-testid="addBullet"
-            @click="addBullet(expIndex)"
-            variant="text"
-            text="Add new bullet point"
-            icon="material-symbols-light:format-list-bulleted-add"
-        />
-
-
+              data-testid="addBullet"
+              @click="addBullet(expIndex)"
+              variant="text"
+              text="Add new bullet point"
+              icon="material-symbols-light:format-list-bulleted-add"
+          />
         </div>
-
-
       </div>
-    </div>
+    </ConfigBlockWrapper>
     <Button
         data-testid="addExp"
         @click="addExp"
         variant="secondary"
         text="Add Experience"
         icon="material-symbols-light:note-stack-add-outline-sharp"
-
     />
-
-  </section>
+  </ConfigWrapper>
 </template>

@@ -2,6 +2,8 @@
 import { useCvStore } from '../../../../stores/cvStore.ts';
 import TextField from "../../../common/TextField.vue";
 import Button from "../../../common/Button.vue";
+import ConfigBlockWrapper from "../common/ConfigBlockWrapper.vue";
+import ConfigWrapper from "../common/ConfigWrapper.vue";
 
 const cvStore = useCvStore();
 
@@ -21,16 +23,15 @@ const removeSkill = (index: number) => {
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 lg:gap-6">
-    <div
+  <ConfigWrapper>
+    <ConfigBlockWrapper
         v-for="(skill, skillIndex) in cvStore.cvData.skills"
         :key="skillIndex"
-        class="relative flex flex-col gap-4 p-4 pt-1 border border-gray-100"
     >
-      <div class="flex items-center justify-between">
-        <h3 class="flex-1 text-indigo-600 font-header uppercase tracking-widest">
-          Skills {{skillIndex + 1}}
-        </h3>
+      <template #title>
+        Skills {{skillIndex + 1}}
+      </template>
+      <template #titleAction>
         <Button
             data-testid="removeSkill"
             @click="removeSkill(skillIndex)"
@@ -38,10 +39,8 @@ const removeSkill = (index: number) => {
             color="red"
             text=""
             icon="material-symbols-light:delete-outline"
-
-            class="justify-end flex-1"
         />
-      </div>
+      </template>
       <TextField
           label="Category"
           v-model="skill.category"
@@ -54,7 +53,7 @@ const removeSkill = (index: number) => {
           isTextarea
           rows="2"
       />
-    </div>
+    </ConfigBlockWrapper>
     <Button
         data-testid="addSkill"
         variant="secondary"
@@ -62,5 +61,5 @@ const removeSkill = (index: number) => {
         @click="addSkill"
         icon="material-symbols-light:note-stack-add-outline-sharp"
     />
-  </section>
+  </ConfigWrapper>
 </template>

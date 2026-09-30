@@ -5,8 +5,16 @@ import {useCvStore} from "../../../../../stores/cvStore.ts";
 
 const cvStore = useCvStore();
 
-const contactInfo = computed(() => [cvStore.cvData.header.location, cvStore.cvData.header.phone, cvStore.cvData.header.email]);
-const links = computed(() => [cvStore.cvData.header.github, cvStore.cvData.header.linkedin]);
+const contactInfo = computed(() =>
+    [cvStore.cvData.header.location, cvStore.cvData.header.phone, cvStore.cvData.header.email]
+        .filter((item): item is string => Boolean(item?.trim()))
+);
+
+const links = computed(() =>
+    [cvStore.cvData.header.linkedin, ...(cvStore.cvData.header.additionalLinks ?? [])]
+        .filter((item): item is string => Boolean(item?.trim()))
+);
+
 const theme = useActiveTheme();
 
 </script>

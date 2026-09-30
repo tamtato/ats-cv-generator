@@ -13,8 +13,9 @@ const cvStore = useCvStore();
 
 const activeThemeStyles = computed(() => {
   return {
-    '--color-selected-color': cvStore.cvData.selectedColor,
-    'fontFamily': cvStore.cvData.selectedFont
+    '--color-selected-color': cvStore.cvData.theme.selectedColor,
+    '--font-selected-header-font': cvStore.cvData.theme.selectedHeaderFont,
+    '--font-selected-body-font': cvStore.cvData.theme.selectedBodyFont,
   };
 });
 
@@ -29,7 +30,7 @@ const sectionComponents: Record<string, any> = {
 </script>
 
 <template>
-  <div :style="activeThemeStyles" class="relative flex flex-col gap-6 text-gray-900">
+  <div :style="activeThemeStyles" class="cv-theme-root relative flex flex-col gap-6 text-gray-900">
     <CvHeader />
     <CvSummary />
     <component
@@ -39,3 +40,15 @@ const sectionComponents: Record<string, any> = {
     />
   </div>
 </template>
+
+<style scoped>
+.cv-theme-root {
+  font-family: var(--font-selected-body-font), sans-serif;
+}
+
+.cv-theme-root :deep(h1),
+.cv-theme-root :deep(h2),
+.cv-theme-root :deep(h3) {
+  font-family: var(--font-selected-header-font), sans-serif;
+}
+</style>

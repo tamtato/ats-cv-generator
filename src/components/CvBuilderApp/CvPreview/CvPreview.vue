@@ -52,7 +52,7 @@ const unscaledHeight = computed(() => `calc(3cm + (${pageCount.value} * 266mm))`
 <template>
   <div ref="wrapperRef">
     <div
-        class="relative print:hidden mx-auto"
+        class="relative print:hidden mx-auto mt-4 xl:mt-0"
         :style="{
         width: `calc(${scaleFactor} * 210mm)`,
         height: `calc(${scaleFactor} * ${unscaledHeight})`

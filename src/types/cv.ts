@@ -31,14 +31,19 @@ export interface CvHeaderType {
     phone: string;
     email: string;
     location: string;
-    github: string;
     linkedin: string;
+    additionalLinks: string[];
+}
+
+export interface CvThemeType {
+    selectedHeaderFont: string;
+    selectedBodyFont: string;
+    selectedColor: string;
+    selectedTheme: CvThemes;
 }
 
 export interface CvDataType {
-    selectedFont: string;
-    selectedColor: string;
-    selectedTheme: CvThemes;
+    theme: CvThemeType;
     sectionOrder: string[];
     header: CvHeaderType;
     summary: string;

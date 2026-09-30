@@ -1,12 +1,12 @@
-export type FormId = 'basicInfo' | 'education' | 'experience' | 'skills' | 'theme';
+export type CvConfigId = 'basicInfo' | 'education' | 'experience' | 'skills' | 'theme';
 
-export interface FormConfig {
-    id: FormId;
+export interface CvConfigType {
+    id: CvConfigId;
     label: string;
     icon: string;
 }
 
-export const FORMS: Record<FormId, FormConfig> = {
+export const CV_CONFIGS: Record<CvConfigId, CvConfigType> = {
     basicInfo: { id: 'basicInfo', label: 'Basic Info & Summary', icon: 'material-symbols-light:person-play-outline' },
     education: { id: 'education', label: 'Education', icon: 'material-symbols-light:sports-martial-arts' },
     experience: { id: 'experience', label: 'Experience', icon: 'material-symbols-light:surfing' },
@@ -17,8 +17,8 @@ export const FORMS: Record<FormId, FormConfig> = {
   certificates: {id: 'certificates', label: 'Certificates', icon:'material-symbols-light:scuba-diving'}
 */
 
-export const DRAGGABLE_SECTIONS: Record<string, FormConfig> = {
-    education: FORMS.education,
-    experience: FORMS.experience,
-    skills: FORMS.skills,
+export const DRAGGABLE_SECTIONS: Record<string, CvConfigType> = {
+    education: CV_CONFIGS.education,
+    experience: CV_CONFIGS.experience,
+    skills: CV_CONFIGS.skills,
 };

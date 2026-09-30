@@ -2,6 +2,8 @@
 import { useCvStore } from '../../../../stores/cvStore.ts';
 import TextField from "../../../common/TextField.vue";
 import Button from "../../../common/Button.vue";
+import ConfigBlockWrapper from "../common/ConfigBlockWrapper.vue";
+import ConfigWrapper from "../common/ConfigWrapper.vue";
 
 const cvStore = useCvStore();
 
@@ -24,16 +26,14 @@ const removeEducation = (index: number) => {
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 lg:gap-6">
-    <div
+  <ConfigWrapper>
+    <ConfigBlockWrapper
         v-for="(education, educationIndex) in cvStore.cvData.education"
-        :key="education.id"
-        class="relative flex flex-col gap-4  p-4 pt-1 border border-gray-100"
-    >
-      <div class="flex items-center justify-between">
-        <h3 class="flex-1 text-indigo-600 font-header uppercase tracking-widest">
-          Education {{educationIndex + 1}}
-        </h3>
+        :key="education.id">
+      <template #title>
+        Education {{educationIndex + 1}}
+      </template>
+      <template #titleAction>
         <Button
             data-testid="removeEducation"
             @click="removeEducation(educationIndex)"
@@ -41,10 +41,9 @@ const removeEducation = (index: number) => {
             color="red"
             text=""
             icon="material-symbols-light:delete-outline"
-            class="justify-end flex-1"
         />
-      </div>
-        <div class="grid lg:grid-cols-2 gap-3">
+      </template>
+      <div class="grid lg:grid-cols-2 gap-3">
         <TextField
             label="Education Title"
             v-model="education.title"
@@ -85,8 +84,7 @@ const removeEducation = (index: number) => {
           placeholder="Ex: Completed an intensive program focused on guerrilla tactics, cybernetic countermeasures, and temporal anomaly navigation."
           isTextarea
       />
-
-    </div>
+    </ConfigBlockWrapper>
     <Button
         data-testid="addEducation"
         variant="secondary"
@@ -94,5 +92,5 @@ const removeEducation = (index: number) => {
         @click="addEducation"
         icon="material-symbols-light:note-stack-add-outline-sharp"
     />
-  </section>
+  </ConfigWrapper>
 </template>

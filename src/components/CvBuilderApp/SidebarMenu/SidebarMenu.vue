@@ -5,8 +5,7 @@ import {useCvStore} from "../../../stores/cvStore.ts";
 import DraggableList from "../../common/DraggableList.vue";
 import Button from "../../common/Button.vue";
 import ImportJSON from "./ImportJSON.vue";
-import {DRAGGABLE_SECTIONS, FORMS} from "../../../types/forms.ts";
-import ThemeForm from "../FormContainer/forms/ThemeForm.vue";
+import {DRAGGABLE_SECTIONS, CV_CONFIGS} from "../../../types/cvConfigs.ts";
 
 const cvStore = useCvStore();
 
@@ -21,37 +20,39 @@ const cvStore = useCvStore();
     <div class="flex flex-col gap-4 py-6 lg:py-8 flex-1">
       <Button
           variant="secondary"
-          :text="FORMS.basicInfo.label"
-          :icon="FORMS.basicInfo.icon"
-          @click="cvStore.openFormById(FORMS.basicInfo.id)"
-          :active="cvStore.activeFormId === FORMS.basicInfo.id"
+          :text="CV_CONFIGS.basicInfo.label"
+          :icon="CV_CONFIGS.basicInfo.icon"
+          @click="cvStore.openCvConfigById(CV_CONFIGS.basicInfo.id)"
+          :active="cvStore.activeCvConfigId === CV_CONFIGS.basicInfo.id"
       />
       <DraggableList
           v-model="cvStore.cvData.sectionOrder"
           :list="DRAGGABLE_SECTIONS"
-          :active-id="cvStore.activeFormId"
-          @select="cvStore.openFormById"
+          :active-id="cvStore.activeCvConfigId"
+          @select="cvStore.openCvConfigById"
       />
       <Button
           variant="secondary"
-          :text="FORMS.theme.label"
-          :icon="FORMS.theme.icon"
-          @click="cvStore.openFormById(FORMS.theme.id)"
-          :active="cvStore.activeFormId === FORMS.theme.id"
+          :text="CV_CONFIGS.theme.label"
+          :icon="CV_CONFIGS.theme.icon"
+          @click="cvStore.openCvConfigById(CV_CONFIGS.theme.id)"
+          :active="cvStore.activeCvConfigId === CV_CONFIGS.theme.id"
       />
 
     </div>
-    <div class="flex gap-4 lg:flex-col mt-auto pt-6 border-t border-gray-200">
-      <ExportJSON />
-      <DownloadPdfButton />
-      <div class="block xl:hidden mt-4 w-full">
-        <Button
+    <div class="flex gap-4 flex-col mt-auto pt-6 border-t border-gray-200">
+      <div class="flex-1 flex xl:flex-col gap-4">
+        <ExportJSON class="flex-1" />
+        <DownloadPdfButton class="flex-1" />
+      </div>
+
+      <Button
             @click="cvStore.mobileOverlay = 'preview'"
             variant="secondary"
             text="Preview PDF"
             icon="material-symbols-light:preview-sharp"
+            class="block xl:hidden"
         />
       </div>
-    </div>
     </aside>
 </template>

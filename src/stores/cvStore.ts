@@ -5,26 +5,29 @@ import {CvThemes} from "../types/themes/themeTypes.ts";
 import {ref} from "vue";
 
 export const useCvStore = defineStore('cv', () => {
-    const activeFormId = ref('basicInfo');
-    const mobileOverlay = ref<'none' | 'form' | 'preview'>('none');
-    const openFormById = (formId: string) => {
-        activeFormId.value = formId;
-        mobileOverlay.value = 'form';
+    const activeCvConfigId = ref('basicInfo');
+    const mobileOverlay = ref<'none' | 'cvConfig' | 'preview'>('none');
+    const openCvConfigById = (cvConfigId: string) => {
+        activeCvConfigId.value = cvConfigId;
+        mobileOverlay.value = 'cvConfig';
     };
 
     const cvData = useLocalStorage<CvDataType>('ats-cv-data', {
-        selectedFont: 'Arial, sans-serif',
-        selectedColor: '#b30909',
+        theme: {
+            selectedHeaderFont: 'Arial, sans-serif',
+            selectedBodyFont: 'Arial, sans-serif',
+            selectedColor: '#b30909',
+            selectedTheme: CvThemes.DEFAULT,
+        },
         sectionOrder: ['education', 'experience', 'skills', /*'certificates'*/],
-        selectedTheme: CvThemes.DEFAULT,
         header: {
             name: 'Sarah Connor',
             title: 'Lead Anti-AGI Tactical Engineer',
             phone: '[REDACTED]',
             email: 'no.fate@resistance.net',
             location: 'Off-Grid, Baja California',
-            github: 'github.com/destroy-skynet',
             linkedin: 'linkedin.com/in/sarahconnor1997',
+            additionalLinks: ['github.com/destroy-skynet']
         },
         summary: 'A pragmatic tactical engineer specializing in the physical dismantling of rogue neural networks, explosive systems architecture, and preventing temporal paradoxes. Deeply opposed to hype-driven AI development and cybernetic integration.',
         skills: [
@@ -75,8 +78,8 @@ export const useCvStore = defineStore('cv', () => {
 
     return {
         cvData,
-        activeFormId,
+        activeCvConfigId,
         mobileOverlay,
-        openFormById
+        openCvConfigById
     };
 });
