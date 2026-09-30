@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import {Icon} from "@iconify/vue";
-import type {CvConfigId} from "../../types/cvConfigs.ts";
 
 const props = defineProps<{
   modelValue: string[];
-  list: Record<string, { label: string; icon: string; id: CvConfigId }>;
+  list: Record<string, { label: string; icon: string; id: any }>;
   activeId: string;
 }>();
 

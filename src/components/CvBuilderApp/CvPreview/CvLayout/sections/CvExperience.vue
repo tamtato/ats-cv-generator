@@ -24,7 +24,7 @@ const theme = useActiveTheme();
         <li
             v-for="(bullet, index) in job.bullets"
             :key="index"
-            :class="['relative break-inside-auto', theme.experience.li, !bullet && 'italic opacity-40']"
+            :class="['relative break-inside-auto', theme.blockItem.text, !bullet && 'italic opacity-40']"
         >
           <span class="text-[12px] font-bold">•</span>
           {{ bullet || 'Short description about what you did...' }}

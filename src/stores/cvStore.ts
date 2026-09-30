@@ -12,14 +12,14 @@ export const useCvStore = defineStore('cv', () => {
         mobileOverlay.value = 'cvConfig';
     };
 
-    const cvData = useLocalStorage<CvDataType>('ats-cv-data', {
+    const cvData = useLocalStorage<CvDataType>('l2r-cv-data', {
         theme: {
             selectedHeaderFont: 'Arial, sans-serif',
             selectedBodyFont: 'Arial, sans-serif',
             selectedColor: '#b30909',
             selectedTheme: CvThemes.DEFAULT,
         },
-        sectionOrder: ['education', 'experience', 'skills', /*'certificates'*/],
+        sectionOrder: ['education', 'experience', 'skills', 'certificates'],
         header: {
             name: 'Sarah Connor',
             title: 'Lead Anti-AGI Tactical Engineer',
@@ -71,6 +71,15 @@ export const useCvStore = defineStore('cv', () => {
                 startDate: '1995',
                 endDate: '1997',
                 current: false,
+                description: 'Completed an intensive program focused on guerrilla tactics, cybernetic countermeasures, and temporal anomaly navigation.'
+            },
+        ],
+        certificates: [
+            {
+                id: '1',
+                title: 'Advanced Tactical Engineering',
+                grade: 'Pass',
+                date: '1997',
                 description: 'Completed an intensive program focused on guerrilla tactics, cybernetic countermeasures, and temporal anomaly navigation.'
             },
         ]

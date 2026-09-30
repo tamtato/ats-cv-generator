@@ -10,6 +10,6 @@ const theme = useActiveTheme();
 
 <template>
   <SectionWrapper v-if="cvStore.cvData.summary?.length > 0" header="Summary">
-    <p :class="theme.summary.text">{{ cvStore.cvData.summary }}</p>
+    <p :class="theme.blockItem.text">{{ cvStore.cvData.summary }}</p>
   </SectionWrapper>
 </template>

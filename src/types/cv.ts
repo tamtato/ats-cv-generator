@@ -42,6 +42,14 @@ export interface CvThemeType {
     selectedTheme: CvThemes;
 }
 
+export interface CvCertificateType {
+    id: string;
+    title: string;
+    grade: string;
+    date: string;
+    description: string;
+}
+
 export interface CvDataType {
     theme: CvThemeType;
     sectionOrder: string[];
@@ -50,4 +58,5 @@ export interface CvDataType {
     skills: CvSkillType[];
     experience: CvExperienceType[];
     education: CvEducationType[];
+    certificates: CvCertificateType[];
 }

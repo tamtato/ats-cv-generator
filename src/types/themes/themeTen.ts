@@ -16,7 +16,7 @@ export const themeTen = {
         content: 'gap-3'
     },
     summary: {
-        text: 'text-[12px]'
+        wrapper: '',
     },
     blockItem: {
         wrapper: '',
@@ -27,17 +27,13 @@ export const themeTen = {
             dates: 'text-gray-900/80 italic',
             endDate: 'text-selected-color'
         },
+        text: 'text-[12px]'
     },
     experience: {
         ul: 'space-y-1 pl-2',
-        li: 'text-[12px]'
-    },
-    education: {
-        description: 'text-[12px]',
     },
     skills: {
         ul: 'space-y-1',
-        li: 'text-[13px]',
         category: 'font-bold pr-1 text-[12px]',
         skills: ''
     }

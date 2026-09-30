@@ -6,6 +6,7 @@ import HeaderConfig from "./configs/HeaderConfig.vue";
 import EducationConfig from "./configs/EducationConfig.vue";
 import SkillsConfig from "./configs/SkillsConfig.vue";
 import ThemeConfig from "./configs/ThemeConfig.vue";
+import CertificatesConfig from "./configs/CertificatesConfig.vue";
 
 const cvStore = useCvStore();
 
@@ -14,6 +15,7 @@ const formComponents: Record<string, any> = {
   education: EducationConfig,
   experience: ExperienceConfig,
   skills: SkillsConfig,
+  certificates: CertificatesConfig,
   theme: ThemeConfig,
 };
 

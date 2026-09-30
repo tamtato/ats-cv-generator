@@ -20,7 +20,7 @@ const theme = useActiveTheme();
         :end-date="e.endDate"
         :current="e.current"
     >
-      <p :class="[theme.education.description, !e.description && 'italic opacity-40']">{{e.description || 'Short description about what you studied...'}}</p>
+      <p :class="[theme.blockItem.text, !e.description && 'italic opacity-40']">{{e.description || 'Short description about what you studied...'}}</p>
     </BlockItem>
   </SectionWrapper>
 </template>

@@ -7,7 +7,7 @@ import CvHeader from "./sections/CvHeader.vue";
 import CvEducation from "./sections/CvEducation.vue";
 import CvExperience from "./sections/CvExperience.vue";
 import CvSkills from "./sections/CvSkills.vue";
-/*import CvCertificates from "./sections/CvCertificates.vue";*/
+import CvCertificates from "./sections/CvCertificates.vue";
 
 const cvStore = useCvStore();
 
@@ -23,9 +23,7 @@ const sectionComponents: Record<string, any> = {
   education: CvEducation,
   experience: CvExperience,
   skills: CvSkills,
-/*
   certificates: CvCertificates,
-*/
 };
 </script>
 

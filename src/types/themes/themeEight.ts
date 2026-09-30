@@ -16,7 +16,7 @@ export const themeEight = {
         content: 'gap-2'
     },
     summary: {
-        text: 'text-[12px] py-2 px-3 bg-selected-color/5'
+        wrapper: '',
     },
     blockItem: {
         wrapper: 'py-2 px-3 bg-selected-color/5',
@@ -27,17 +27,13 @@ export const themeEight = {
             dates: '',
             endDate: 'text-selected-color'
         },
+        text: 'text-[12px]'
     },
     experience: {
         ul: 'space-y-1 pl-2',
-        li: 'text-[12px]'
-    },
-    education: {
-        description: 'text-[12px]',
     },
     skills: {
         ul: 'space-y-1 py-2 px-3 bg-selected-color/5',
-        li: 'text-[12px]',
         category: 'font-bold pr-1 text-[12px]',
         skills: ''
     }
