@@ -1,0 +1,18 @@
+---
+import Image from 'astro/components/Image.astro';
+import LOGO from '../../assets/LOGO.svg'
+import AtsRealitiesModal from "./AtsRealitiesModal.astro";
+import ReadMeDocsModal from "./ReadMeDocsModal.astro";
+import GitHub from "./GitHub.astro";
+---
+
+<div class="bg-white p-3 lg:p-6 flex flex-col gap-6">
+    <div class="flex items-center justify-between">
+        <h4>L2R CV</h4>
+        <div class="flex gap-2 md:gap-4 lg:gap-6">
+            <GitHub />
+            <ReadMeDocsModal />
+            <AtsRealitiesModal />
+        </div>
+    </div>
+</div>

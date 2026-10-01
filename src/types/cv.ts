@@ -9,8 +9,9 @@ export interface CvExperienceType {
     id: string;
     title: string;
     company: string;
-    startDate?: string;
-    endDate?: string;
+    startDate: string;
+    endDate: string;
+    current: boolean;
     bullets: string[];
 }
 
@@ -18,28 +19,44 @@ export interface CvEducationType {
     id: string;
     title: string;
     school: string;
-    startDate?: string;
-    endDate?: string;
+    startDate: string;
+    endDate: string;
+    current: boolean;
     description: string;
 }
 
 export interface CvHeaderType {
     name: string;
     title: string;
-    phone?: string;
-    email?: string;
-    location?: string;
-    github?: string;
-    linkedin?: string;
+    phone: string;
+    email: string;
+    location: string;
+    linkedin: string;
+    additionalLinks: string[];
+}
+
+export interface CvThemeType {
+    selectedHeaderFont: string;
+    selectedBodyFont: string;
+    selectedColor: string;
+    selectedTheme: CvThemes;
+}
+
+export interface CvCertificateType {
+    id: string;
+    title: string;
+    grade: string;
+    date: string;
+    description: string;
 }
 
 export interface CvDataType {
-    selectedFont: string;
-    selectedColor: string;
-    selectedTheme: CvThemes;
+    theme: CvThemeType;
+    sectionOrder: string[];
     header: CvHeaderType;
     summary: string;
     skills: CvSkillType[];
     experience: CvExperienceType[];
     education: CvEducationType[];
+    certificates: CvCertificateType[];
 }

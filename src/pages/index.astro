@@ -1,31 +1,30 @@
 ---
 import '../styles/global.css';
-import EditorSidebar from '../components/EditorSidebar/index.vue';
-import CvPreview from '../components/CvPreview/CvPreview.vue';
-import AtsRealitiesModal from "../components/AtsRealitiesModal.astro";
+import CvBuilderApp from '../components/CvBuilderApp/CvBuilderApp.vue';
+import PageHeader from '../components/PageHeader/PageHeader.astro';
 ---
 
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>ATS CV Generator</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ATS CV Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+          rel="stylesheet">
 </head>
-<body class="bg-gray-300 m-0 p-0 font-sans h-screen overflow-hidden print:bg-white print:h-auto print:overflow-visible">
-<main class="grid grid-cols-1 md:grid-cols-12 h-full print:block print:h-auto">
-	<!-- Left Sidebar (Hidden on Print) -->
-	<aside class="md:col-span-6 lg:col-span-5 bg-white border-r border-gray-300 p-6 overflow-y-auto h-full print:hidden shadow-lg z-10 relative flex flex-col gap-6">
-		<AtsRealitiesModal />
-		<!-- Editor Tools -->
-		<EditorSidebar client:only="vue" />
-	</aside>
-	<!-- CV Preview Area -->
-	<section class="md:col-span-6 lg:col-span-7 h-full overflow-y-auto print:block">
-		<CvPreview client:only="vue" />
-	</section>
+<body class="m-0 p-0 h-screen flex flex-col font-body bg-gray-100 relative print:bg-white print:h-auto">
+
+<!-- Header area (Hidden when printing) -->
+<header class="print:hidden">
+    <PageHeader/>
+</header>
+
+<!-- Main App Shell takes up the remaining vertical space -->
+<main class="flex-1 w-full overflow-hidden print:hidden ">
+    <CvBuilderApp client:only="vue"/>
 </main>
+
 </body>
 </html>

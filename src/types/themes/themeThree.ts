@@ -17,7 +17,6 @@ export const themeThree = {
     },
     summary: {
         wrapper: '',
-        text: 'text-[12px]'
     },
     blockItem: {
         wrapper: '',
@@ -28,17 +27,13 @@ export const themeThree = {
             dates: 'text-gray-500',
             endDate: ''
         },
+        text: 'text-[12px]'
     },
     experience: {
         ul: 'space-y-1 pl-2',
-        li: 'text-[12px]'
-    },
-    education: {
-        description: 'text-[12px]',
     },
     skills: {
         ul: 'space-y-1',
-        li: 'text-[12px]',
         category: 'font-bold pr-1 text-[12px]',
         skills: ''
     }

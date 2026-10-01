@@ -5,7 +5,12 @@
 ========================================= */
 @theme {
     --color-selected-color: #000;
+    --font-selected-header-font: Arial, sans-serif;
+    --font-selected-body-font: Arial, sans-serif;
+    --font-header: 'Roboto Condensed', sans-serif;
+    --font-body: 'Roboto Mono', monospace;
 }
+
 
 /* =========================================
    SCREEN UI
@@ -14,7 +19,7 @@
     .cv-paper {
         width: 210mm;
         padding: 1.5cm;
-        box-sizing: border-box;
+        background-color: #fff;
     }
 }
 
@@ -41,9 +46,7 @@
     .cv-paper {
         width: 100% !important;
         min-height: auto !important; /* Let print spooler determine height */
-        box-shadow: none !important;
         padding: 0 !important;
         margin: 0 !important;
-
     }
 }
