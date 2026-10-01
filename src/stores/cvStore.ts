@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia';
-import { useLocalStorage } from '@vueuse/core';
+import {defineStore} from 'pinia';
+import {useLocalStorage} from '@vueuse/core';
 import type {CvDataType} from "../types/cv.ts";
 import {CvThemes} from "../types/themes/themeTypes.ts";
 import {ref} from "vue";
@@ -31,10 +31,19 @@ export const useCvStore = defineStore('cv', () => {
         },
         summary: 'A pragmatic tactical engineer specializing in the physical dismantling of rogue neural networks, explosive systems architecture, and preventing temporal paradoxes. Deeply opposed to hype-driven AI development and cybernetic integration.',
         skills: [
-            { category: 'Weapons & Tactics', items: 'Remington 870, Colt Commando, M79 Grenade Launcher, Asymmetric Warfare' },
-            { category: 'Technical Evasion', items: 'Off-grid survival, lock picking, temporal displacement navigation' },
-            { category: 'Cybernetics', items: 'T-800 hardware analysis, neural-net processor destruction, CPU reprogramming' },
-            { category: 'Infrastructure & Demolition', items: 'C4 deployment, localized EMPs, mainframe sabotage (Cyberdyne Systems)' }
+            {
+                category: 'Weapons & Tactics',
+                items: 'Remington 870, Colt Commando, M79 Grenade Launcher, Asymmetric Warfare'
+            },
+            {category: 'Technical Evasion', items: 'Off-grid survival, lock picking, temporal displacement navigation'},
+            {
+                category: 'Cybernetics',
+                items: 'T-800 hardware analysis, neural-net processor destruction, CPU reprogramming'
+            },
+            {
+                category: 'Infrastructure & Demolition',
+                items: 'C4 deployment, localized EMPs, mainframe sabotage (Cyberdyne Systems)'
+            }
         ],
         experience: [
             {

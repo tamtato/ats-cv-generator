@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCvStore } from '../../../../stores/cvStore.ts';
+import {useCvStore} from '../../../../stores/cvStore.ts';
 import TextField from "../../../common/TextField.vue";
 import Button from "../../../common/Button.vue";
 import ConfigBlockWrapper from "../common/ConfigBlockWrapper.vue";
@@ -29,7 +29,7 @@ const removeSkill = (index: number) => {
         :key="skillIndex"
     >
       <template #title>
-        Skills {{skillIndex + 1}}
+        Skills {{ skillIndex + 1 }}
       </template>
       <template #titleAction>
         <Button

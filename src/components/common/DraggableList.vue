@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import {ref} from 'vue';
 import {Icon} from "@iconify/vue";
 
 const props = defineProps<{
@@ -50,8 +50,8 @@ const onDrop = (dropIndex: number) => {
         activeId === itemId ? 'text-indigo-600 border-indigo-500 ' : 'text-gray-800 hover:text-indigo-600 hover:border-indigo-500'
       ]"
     >
-      <Icon icon="material-symbols-light:drag-indicator" class="w-6 h-6" />
-      <Icon :icon="list[itemId]?.icon" class="w-6 h-6" />
+      <Icon icon="material-symbols-light:drag-indicator" class="w-6 h-6"/>
+      <Icon :icon="list[itemId]?.icon" class="w-6 h-6"/>
       <span class="text-sm tracking-widest uppercase">{{ list[itemId]?.label }}</span>
     </button>
   </div>

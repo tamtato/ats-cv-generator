@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useCvStore } from "../../../stores/cvStore.ts";
+import {ref} from 'vue';
+import {useCvStore} from "../../../stores/cvStore.ts";
 import Button from "../../common/Button.vue";
 
 

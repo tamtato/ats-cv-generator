@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useCvStore } from '../../../stores/cvStore';
+import {computed} from 'vue';
+import {useCvStore} from '../../../stores/cvStore';
 import ExperienceConfig from './configs/ExperienceConfig.vue';
 import HeaderConfig from "./configs/HeaderConfig.vue";
 import EducationConfig from "./configs/EducationConfig.vue";
@@ -27,8 +27,7 @@ const activeComponent = computed(() => {
 <template>
   <KeepAlive>
     <div class="w-full bg-white p-4 lg:p-6 min-h-full overflow-y-auto">
-      <component :is="activeComponent" />
+      <component :is="activeComponent"/>
     </div>
-
   </KeepAlive>
 </template>

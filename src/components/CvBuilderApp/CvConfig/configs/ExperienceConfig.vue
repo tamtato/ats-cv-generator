@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCvStore } from '../../../../stores/cvStore.ts';
+import {useCvStore} from '../../../../stores/cvStore.ts';
 import Button from "../../../common/Button.vue";
 import TextField from "../../../common/TextField.vue";
 import ConfigBlockWrapper from "../common/ConfigBlockWrapper.vue";
@@ -39,7 +39,7 @@ const removeBullet = (expIndex: number, bulletIndex: number) => {
         :key="exp.id"
     >
       <template #title>
-        Experience {{expIndex + 1}}
+        Experience {{ expIndex + 1 }}
       </template>
       <template #titleAction>
         <Button
@@ -62,7 +62,6 @@ const removeBullet = (expIndex: number, bulletIndex: number) => {
             v-model="exp.company"
             placeholder="Ex: The Human Resistance"
         />
-
       </div>
       <TextField
           label="I'm currently working here"
@@ -75,14 +74,14 @@ const removeBullet = (expIndex: number, bulletIndex: number) => {
             label="Start Date"
             v-model="exp.startDate"
             placeholder="DD/MM/YY"
-            type="date"
+            type="month"
         />
         <TextField
             :disabled="exp.current"
             label="End Date"
             v-model="exp.endDate"
             placeholder="DD/MM/YY"
-            type="date"
+            type="month"
         />
       </div>
 
@@ -95,22 +94,21 @@ const removeBullet = (expIndex: number, bulletIndex: number) => {
             :key="bulletIndex"
             class="flex gap-2 items-center"
         >
-            <TextField
-                v-model="exp.bullets[bulletIndex]"
-                data-testid="bulletPoint"
-                placeholder="Ex:Architected the physical destruction of the Cyberdyne Systems primary development lab, preventing the deployment of the Skynet system."
-                rows="3"
-                isTextarea
-            />
-            <Button
-                data-testid="removeBullet"
-                @click="removeBullet(expIndex, bulletIndex)"
-                variant="text"
-                color="red"
-                text=""
-                icon="material-symbols-light:delete-outline"
-            />
-
+          <TextField
+              v-model="exp.bullets[bulletIndex]"
+              data-testid="bulletPoint"
+              placeholder="Ex:Architected the physical destruction of the Cyberdyne Systems primary development lab, preventing the deployment of the Skynet system."
+              rows="3"
+              isTextarea
+          />
+          <Button
+              data-testid="removeBullet"
+              @click="removeBullet(expIndex, bulletIndex)"
+              variant="text"
+              color="red"
+              text=""
+              icon="material-symbols-light:delete-outline"
+          />
         </div>
         <div class="flex">
           <Button

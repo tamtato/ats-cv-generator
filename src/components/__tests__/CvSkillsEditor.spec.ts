@@ -1,17 +1,17 @@
-import { mount, VueWrapper } from '@vue/test-utils';
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { createTestingPinia } from '@pinia/testing';
-import SkillsForm from '../CvBuilderApp/FormContainer/forms/SkillsForm.vue';
-import { useCvStore } from '../../stores/cvStore';
+import {mount, VueWrapper} from '@vue/test-utils';
+import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
+import {createTestingPinia} from '@pinia/testing';
+import SkillsConfig from '../CvBuilderApp/CvConfig/configs/SkillsConfig.vue';
+import {useCvStore} from '../../stores/cvStore';
 
-describe('SkillsForm.vue', () => {
+describe('SkillsConfig.vue', () => {
     let wrapper: VueWrapper<any>;
     let store: any;
 
     beforeEach(() => {
-        wrapper = mount(SkillsForm, {
+        wrapper = mount(SkillsConfig, {
             global: {
-                plugins: [createTestingPinia({ stubActions: false, createSpy: vi.fn })],
+                plugins: [createTestingPinia({stubActions: false, createSpy: vi.fn})],
             },
         });
 
@@ -32,15 +32,15 @@ describe('SkillsForm.vue', () => {
         await addSkillBtn.trigger('click');
 
         expect(store.cvData.skills.length).toBe(1);
-        expect(store.cvData.skills[0]).toEqual({ category: '', items: '' });
+        expect(store.cvData.skills[0]).toEqual({category: '', items: ''});
     });
 
     it('removes a skill category when clicking the Remove button', async () => {
         // Seed store with one skill category
-        store.cvData.skills = [{ category: 'Languages', items: 'JavaScript, TypeScript' }];
+        store.cvData.skills = [{category: 'Languages', items: 'JavaScript, TypeScript'}];
         await wrapper.vm.$nextTick();
 
-        const removeSkillBtn = wrapper.find('[data-testid="removeSkill"]');
+        const removeSkillBtn = wrapper.find('[data-testid="removeSkill"] ');
         await removeSkillBtn.trigger('click');
 
         expect(store.cvData.skills.length).toBe(0);
@@ -48,11 +48,11 @@ describe('SkillsForm.vue', () => {
 
     it('updates skill details when user types in inputs', async () => {
         // Seed store with an empty skill block
-        store.cvData.skills = [{ category: '', items: '' }];
+        store.cvData.skills = [{category: '', items: ''}];
         await wrapper.vm.$nextTick();
 
-        const categoryInput = wrapper.find('[data-testid="skillCategory"]');
-        const itemsTextarea = wrapper.find('[data-testid="skillItems"]');
+        const categoryInput = wrapper.find('[data-testid="category-text-field"]');
+        const itemsTextarea = wrapper.find('[data-testid="skills-text-field"]');
 
         await categoryInput.setValue('Frontend Frameworks');
         await itemsTextarea.setValue('Vue 3, React, Astro');

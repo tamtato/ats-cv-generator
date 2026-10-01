@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCvStore } from '../../../../stores/cvStore.ts';
+import {useCvStore} from '../../../../stores/cvStore.ts';
 import TextField from "../../../common/TextField.vue";
 import Button from "../../../common/Button.vue";
 import ConfigBlockWrapper from "../common/ConfigBlockWrapper.vue";
@@ -31,7 +31,7 @@ const removeEducation = (index: number) => {
         v-for="(education, educationIndex) in cvStore.cvData.education"
         :key="education.id">
       <template #title>
-        Education {{educationIndex + 1}}
+        Education {{ educationIndex + 1 }}
       </template>
       <template #titleAction>
         <Button
@@ -54,7 +54,6 @@ const removeEducation = (index: number) => {
             v-model="education.school"
             placeholder="Ex: Resistance Training Academy"
         />
-
       </div>
       <TextField
           label="I'm currently studying here"
@@ -68,14 +67,14 @@ const removeEducation = (index: number) => {
             label="Start Date"
             v-model="education.startDate"
             placeholder="DD/MM/YY"
-            type="date"
+            type="month"
         />
         <TextField
             :disabled="education.current"
             label="End Date"
             v-model="education.endDate"
             placeholder="DD/MM/YY"
-            type="date"
+            type="month"
         />
       </div>
       <TextField

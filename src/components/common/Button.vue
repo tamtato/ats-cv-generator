@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Icon } from "@iconify/vue";
+import {computed} from 'vue';
+import {Icon} from "@iconify/vue";
 
 const props = withDefaults(defineProps<{
-  variant: 'primary' | 'secondary' | 'text' ;
+  variant: 'primary' | 'secondary' | 'text';
   color?: 'primary' | 'red';
   text?: string;
   icon?: string;
@@ -45,8 +45,8 @@ const colorStyles = computed(() => {
       ['secondary', 'text', 'dotted'].includes(variant) && active && colorStyles.active
     ]"
   >
-    <slot name="icon" />
-    <Icon v-if="icon" :icon="icon" class="w-6 h-6 shrink-0" />
+    <slot name="icon"/>
+    <Icon v-if="icon" :icon="icon" class="w-6 h-6 shrink-0"/>
     <span v-if="text">{{ text }}</span>
   </button>
 </template>

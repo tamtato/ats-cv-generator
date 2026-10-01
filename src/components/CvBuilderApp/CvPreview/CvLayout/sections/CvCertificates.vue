@@ -18,7 +18,8 @@ const theme = useActiveTheme();
         :sub-title="cert.grade"
         :completion-date="cert.date"
     >
-      <p :class="[theme.blockItem.text, !cert.description && 'italic opacity-40']">{{cert.description || 'Short description about the certificate'}}</p>
+      <p :class="[theme.blockItem.text, !cert.description && 'italic opacity-40']">
+        {{ cert.description || 'Short description about the certificate' }}</p>
     </BlockItem>
   </SectionWrapper>
 </template>

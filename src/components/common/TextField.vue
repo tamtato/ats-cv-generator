@@ -1,6 +1,6 @@
 <!-- components/common/TextField.vue -->
 <script setup lang="ts">
-import { computed } from 'vue';
+import {computed} from 'vue';
 
 const props = withDefaults(defineProps<{
   label?: string;

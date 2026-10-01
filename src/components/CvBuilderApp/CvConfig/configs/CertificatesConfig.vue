@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCvStore } from '../../../../stores/cvStore.ts';
+import {useCvStore} from '../../../../stores/cvStore.ts';
 import TextField from "../../../common/TextField.vue";
 import Button from "../../../common/Button.vue";
 import ConfigBlockWrapper from "../common/ConfigBlockWrapper.vue";
@@ -20,7 +20,7 @@ const addCertificate = () => {
 const removeCertificate = (index: number) => {
   cvStore.cvData.certificates?.splice(index, 1);
 };
-
+ 
 </script>
 <template>
   <ConfigWrapper>
@@ -28,7 +28,7 @@ const removeCertificate = (index: number) => {
         v-for="(certificate, certificateIndex) in cvStore.cvData.certificates"
         :key="certificate.id">
       <template #title>
-        Certificate {{certificateIndex + 1}}
+        Certificate {{ certificateIndex + 1 }}
       </template>
       <template #titleAction>
         <Button
@@ -55,7 +55,7 @@ const removeCertificate = (index: number) => {
             label="Date Received"
             v-model="certificate.date"
             placeholder="DD/MM/YY"
-            type="date"
+            type="month"
         />
       </div>
       <TextField

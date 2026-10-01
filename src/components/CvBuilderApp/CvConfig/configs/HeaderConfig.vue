@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCvStore } from '../../../../stores/cvStore.ts';
+import {useCvStore} from '../../../../stores/cvStore.ts';
 import TextField from "../../../common/TextField.vue";
 import Button from "../../../common/Button.vue";
 import ConfigWrapper from "../common/ConfigWrapper.vue";
@@ -60,7 +60,6 @@ const removeAdditionalLink = (index: number) => {
         />
         <TextField
             label="LinkedIn"
-            test-id="linkedin"
             v-model="cvStore.cvData.header.linkedin"
             @blur="cvStore.cvData.header.linkedin = cvStore.cvData.header.linkedin?.replace(/^(https?:\/\/|javascript:)/i, '')"
         />
@@ -84,13 +83,15 @@ const removeAdditionalLink = (index: number) => {
           />
         </div>
       </div>
-      <Button @click="addAdditionalLink" class="h-10.5" variant="text" text="Add additional link" icon="material-symbols-light:add-link"/>
+      <Button @click="addAdditionalLink" class="h-10.5" variant="text" text="Add additional link"
+              icon="material-symbols-light:add-link"/>
     </ConfigBlockWrapper>
     <ConfigBlockWrapper>
       <template #title>
         What do you bring to the table?
       </template>
       <TextField
+          data-testid="summary"
           label="Summary"
           v-model="cvStore.cvData.summary"
           placeholder="A pragmatic tactical engineer specializing in the physical dismantling of rogue neural networks, explosive systems architecture, and preventing temporal paradoxes. Deeply opposed to hype-driven AI development and cybernetic integration."

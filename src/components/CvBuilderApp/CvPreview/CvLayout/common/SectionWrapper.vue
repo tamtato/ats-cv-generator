@@ -15,7 +15,7 @@ const theme = useActiveTheme();
       </span>
     </h3>
     <div :class="`flex flex-col ${theme.section.content}`">
-      <slot />
+      <slot/>
     </div>
   </section>
 </template>

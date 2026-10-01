@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
+import {computed, onBeforeUnmount, onMounted, ref} from 'vue';
 import CvLayout from "./CvLayout/CvLayout.vue";
+
 const wrapperRef = ref<HTMLElement | null>(null);
 const contentRef = ref<HTMLElement | null>(null);
 
@@ -74,7 +75,7 @@ const unscaledHeight = computed(() => `calc(3cm + (${pageCount.value} * 266mm))`
           ></div>
         </template>
         <div ref="contentRef">
-          <CvLayout />
+          <CvLayout/>
         </div>
 
       </div>

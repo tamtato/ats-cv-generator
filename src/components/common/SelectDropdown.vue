@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { onClickOutside } from '@vueuse/core';
-import { Icon } from '@iconify/vue';
+import {computed, ref} from 'vue';
+import {onClickOutside} from '@vueuse/core';
+import {Icon} from '@iconify/vue';
 
 export interface SelectOption {
   label: string;
@@ -14,7 +14,6 @@ const props = withDefaults(defineProps<{
   options: (string | number)[] | SelectOption[];
   placeholder?: string;
   disabled?: boolean;
-  testId?: string;
 }>(), {
   label: '',
   placeholder: 'Select an option',
@@ -36,9 +35,9 @@ onClickOutside(dropdownRef, () => {
 const normalizedOptions = computed<SelectOption[]>(() => {
   return props.options.map((opt) => {
     if (typeof opt === 'object' && opt !== null && 'value' in opt) {
-      return { label: opt.label ?? String(opt.value), value: opt.value };
+      return {label: opt.label ?? String(opt.value), value: opt.value};
     }
-    return { label: String(opt), value: opt };
+    return {label: String(opt), value: opt};
   });
 });
 
@@ -47,7 +46,7 @@ const selectedOption = computed(() => {
 });
 
 const computedTestId = computed(() => {
-  return props.testId || props.label.toLowerCase().replace(/\s+/g, '-') + '-select';
+  return props.label.toLowerCase().replace(/\s+/g, '-') + '-select';
 });
 
 const toggleDropdown = () => {

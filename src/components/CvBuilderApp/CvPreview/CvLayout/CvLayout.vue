@@ -1,7 +1,6 @@
-
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useCvStore } from "../../../../stores/cvStore.ts";
+import {computed} from 'vue';
+import {useCvStore} from "../../../../stores/cvStore.ts";
 import CvSummary from "./sections/CvSummary.vue";
 import CvHeader from "./sections/CvHeader.vue";
 import CvEducation from "./sections/CvEducation.vue";
@@ -29,8 +28,8 @@ const sectionComponents: Record<string, any> = {
 
 <template>
   <div :style="activeThemeStyles" class="cv-theme-root relative flex flex-col gap-6 text-gray-900">
-    <CvHeader />
-    <CvSummary />
+    <CvHeader/>
+    <CvSummary/>
     <component
         v-for="sectionId in cvStore.cvData.sectionOrder"
         :key="sectionId"

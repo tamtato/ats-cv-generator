@@ -2,27 +2,28 @@
 import '../styles/global.css';
 import CvBuilderApp from '../components/CvBuilderApp/CvBuilderApp.vue';
 import PageHeader from '../components/PageHeader/PageHeader.astro';
-
 ---
 
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>ATS CV Generator</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ATS CV Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+          rel="stylesheet">
+</head>
 <body class="m-0 p-0 h-screen flex flex-col font-body bg-gray-100 relative print:bg-white print:h-auto">
 
 <!-- Header area (Hidden when printing) -->
 <header class="print:hidden">
-	<PageHeader />
+    <PageHeader/>
 </header>
 
 <!-- Main App Shell takes up the remaining vertical space -->
 <main class="flex-1 w-full overflow-hidden print:hidden ">
-	<CvBuilderApp client:only="vue" />
+    <CvBuilderApp client:only="vue"/>
 </main>
 
 </body>

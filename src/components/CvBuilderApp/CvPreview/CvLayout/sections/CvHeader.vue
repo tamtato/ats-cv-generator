@@ -21,9 +21,9 @@ const theme = useActiveTheme();
 
 <template>
   <header :class="theme.header.wrapper">
-      <h1 :class="theme.header.name">
-        {{ cvStore.cvData.header.name }}
-      </h1>
+    <h1 :class="theme.header.name">
+      {{ cvStore.cvData.header.name }}
+    </h1>
     <h2
         :class="theme.header.title"
     >
@@ -31,11 +31,11 @@ const theme = useActiveTheme();
     </h2>
 
     <div :class="theme.header.contact.wrapper">
-        <p v-for="contact in contactInfo" :key="contact" :class="theme.header.contact.contacts" >{{ contact }}</p>
-        <a v-for="link in links" :key="link" :href="'https://' + link" target="_blank" :class="theme.header.contact.links"
-          >
-          {{ link }}
-        </a>
+      <p v-for="contact in contactInfo" :key="contact" :class="theme.header.contact.contacts">{{ contact }}</p>
+      <a v-for="link in links" :key="link" :href="'https://' + link" target="_blank" :class="theme.header.contact.links"
+      >
+        {{ link }}
+      </a>
     </div>
   </header>
 </template>

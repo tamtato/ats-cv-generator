@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import {computed} from 'vue';
 
 const props = withDefaults(defineProps<{
   label?: string;
@@ -41,7 +41,8 @@ const handleColorPick = (e: Event) => {
       {{ label }}
     </label>
 
-    <div class="h-10.5 flex items-center justify-between p-2 border border-gray-300 bg-white transition-colors hover:border-indigo-600">
+    <div
+        class="h-10.5 flex items-center justify-between p-2 border border-gray-300 bg-white transition-colors hover:border-indigo-600">
       <div class="relative w-6 h-6 shrink-0 mr-3">
         <div
             class="w-full h-full"

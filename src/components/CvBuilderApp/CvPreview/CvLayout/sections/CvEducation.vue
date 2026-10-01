@@ -11,7 +11,7 @@ const theme = useActiveTheme();
 
 <template>
   <SectionWrapper v-if="cvStore.cvData.education?.length > 0" header="Education">
-  <BlockItem
+    <BlockItem
         v-for="e in cvStore.cvData.education"
         :key="e.id"
         :title="e.title"
@@ -20,7 +20,8 @@ const theme = useActiveTheme();
         :end-date="e.endDate"
         :current="e.current"
     >
-      <p :class="[theme.blockItem.text, !e.description && 'italic opacity-40']">{{e.description || 'Short description about what you studied...'}}</p>
+      <p :class="[theme.blockItem.text, !e.description && 'italic opacity-40']">
+        {{ e.description || 'Short description about what you studied...' }}</p>
     </BlockItem>
   </SectionWrapper>
 </template>

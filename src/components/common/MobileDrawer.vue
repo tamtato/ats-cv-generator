@@ -29,7 +29,7 @@ defineEmits<{
     </div>
 
     <div class="flex-1 overflow-y-auto bg-white">
-      <slot />
+      <slot/>
     </div>
   </div>
 </template>

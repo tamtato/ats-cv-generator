@@ -1,27 +1,27 @@
-import { mount } from '@vue/test-utils';
-import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
+import {mount} from '@vue/test-utils';
+import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import DownloadPdfButton from '../CvBuilderApp/SidebarMenu/DownloadPdfButton.vue';
 
 describe('DownloadPdfButton.vue', () => {
-  let wrapper: any;
+    let wrapper: any;
 
-  beforeEach(() => {
-    vi.restoreAllMocks();
+    beforeEach(() => {
+        vi.restoreAllMocks();
 
-    // Mock the native print function
-    window.print = vi.fn();
+        // Mock the native print function
+        window.print = vi.fn();
 
-    wrapper = mount(DownloadPdfButton);
-  });
+        wrapper = mount(DownloadPdfButton);
+    });
 
-  afterEach(() => {
-    if (wrapper) wrapper.unmount();
-  });
+    afterEach(() => {
+        if (wrapper) wrapper.unmount();
+    });
 
-  it('triggers the browser print dialog when clicked', async () => {
-    const printBtn = wrapper.find('[data-testid="download-pdf-button"]');
-    await printBtn.trigger('click');
+    it('triggers the browser print dialog when clicked', async () => {
+        const printBtn = wrapper.find('[data-testid="download-pdf-button"]');
+        await printBtn.trigger('click');
 
-    expect(window.print).toHaveBeenCalledOnce();
-  });
+        expect(window.print).toHaveBeenCalledOnce();
+    });
 });
